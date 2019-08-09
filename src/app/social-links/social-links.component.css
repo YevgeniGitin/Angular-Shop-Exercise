@@ -1,0 +1,18 @@
+img {
+    width: 1.5em;
+    height: 1.5em;
+}
+
+img:hover {
+    background-color: rgb(144, 146, 148);
+}
+
+ul {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 0;
+}
+
+ul li {
+    list-style-type: none;
+}

@@ -1,0 +1,11 @@
+<button class="back" (click)="goBack()">back</button>
+<div class="box">
+    <div class="productbox">
+        <h1>{{product.Title}}</h1>
+        <img [src]="product.Image" [alt]="product.Title">
+        <h3>prise:{{product.Price}}</h3>
+    </div>
+    <div class="description">
+        <p>{{product.Description}}</p>
+    </div>
+</div>

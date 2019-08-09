@@ -1,0 +1,16 @@
+.cards_box {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+app-product-card {
+    width: 24%;
+    margin-top: 1em;
+}
+
+app-product-card:hover {
+    cursor: pointer;
+    border: 1px solid black;
+}

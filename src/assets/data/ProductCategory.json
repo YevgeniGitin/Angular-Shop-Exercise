@@ -1,0 +1,46 @@
+[{
+        "id": "d2799801-acab-11e9-9692-8f8fe6f83dba",
+        "title": "Watches",
+        "productarr": [{
+                "CategoryId": "d2799801-acab-11e9-9692-8f8fe6f83dba",
+                "Image": "assets/img/1.png",
+                "Title": "first item",
+                "Price": 5,
+                "Description": "Description"
+            },
+            {
+                "CategoryId": "d2799801-acab-11e9-9692-8f8fe6f83dba",
+                "Image": "assets/img/2.png",
+                "Title": "second item",
+                "Price": 20,
+                "Description": "Description"
+            },
+            {
+                "CategoryId": "d2799801-acab-11e9-9692-8f8fe6f83dba",
+                "Image": "assets/img/3.png",
+                "Title": "hi item",
+                "Price": 400,
+                "Description": "Description"
+            }
+        ]
+    },
+    {
+        "id": "d6ebbf31-acab-11e9-9692-8f8fe6f83dba",
+        "title": "Smartphones",
+        "productarr": [{
+                "CategoryId": "d6ebbf31-acab-11e9-9692-8f8fe6f83dba",
+                "Image": "assets/img/4.png",
+                "Title": "first item",
+                "Price": 58,
+                "Description": "Description"
+            },
+            {
+                "CategoryId": "d6ebbf31-acab-11e9-9692-8f8fe6f83dba",
+                "Image": "assets/img/5.png",
+                "Title": "second",
+                "Price": 56,
+                "Description": "Description"
+            }
+        ]
+    }
+]
