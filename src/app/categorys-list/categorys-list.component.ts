@@ -1,11 +1,6 @@
-import {
-  Component,
-  OnInit,
-  AfterContentInit,
-  Output,
-  EventEmitter
-} from "@angular/core";
+import { Component, OnInit, Output, EventEmitter} from "@angular/core";
 import productsCategory from "../../assets/data/ProductCategory.json";
+import{ trigger , state , style , animate , transition } from '@angular/animations';
 
 interface Category {
   id: string;
@@ -16,7 +11,13 @@ interface Category {
 @Component({
   selector: "app-categorys-list",
   templateUrl: "./categorys-list.component.html",
-  styleUrls: ["./categorys-list.component.css"]
+  styleUrls: ["./categorys-list.component.css"],
+  animations:[trigger('fadeInOut', [
+    state('void', style({
+      opacity: 0
+    })),
+    transition('void <=> *', animate('1s')),
+  ])]
 })
 export class CategorysListComponent implements OnInit {
   @Output() products = new EventEmitter<object[]>(); //out put the products

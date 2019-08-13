@@ -1,9 +1,16 @@
 import { Component, OnInit, Input } from "@angular/core";
+import{ trigger , state , style , animate , transition } from '@angular/animations';
 
 @Component({
   selector: "app-products-list",
   templateUrl: "./products-list.component.html",
-  styleUrls: ["./products-list.component.css"]
+  styleUrls: ["./products-list.component.css"],
+  animations:[trigger('fadeInOut', [
+    state('void', style({
+      opacity: 0
+    })),
+    transition('void => *', animate('1s')),
+  ])]
 })
 export class ProductsListComponent implements OnInit {
   @Input() productsArray: object[]; //get the products array

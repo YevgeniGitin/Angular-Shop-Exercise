@@ -1,9 +1,16 @@
 import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
+import{ trigger , state , style , animate , transition } from '@angular/animations';
 
 @Component({
   selector: "app-product-display",
   templateUrl: "./product-display.component.html",
-  styleUrls: ["./product-display.component.css"]
+  styleUrls: ["./product-display.component.css"],
+  animations:[trigger('fadeInOut', [
+    state('void', style({
+      opacity: 0
+    })),
+    transition('void <=> *', animate('1s')),
+  ])]
 })
 export class ProductDisplayComponent implements OnInit {
   @Input() product: object; //get the product to show

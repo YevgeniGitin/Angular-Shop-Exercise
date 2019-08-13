@@ -12,7 +12,8 @@ import {trigger,state,style,transition,animate} from "@angular/animations";
           width: "15%",
         })
       ),
-      transition("* <=> void", animate("0.5s")) // speed, delay, ease-out/ease-in
+      transition("open => void", animate("0.6s")), // speed, delay, ease-out/ease-in
+      transition("void => *", animate("0.2s"))
     ])
   ]
 })
