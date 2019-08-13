@@ -2,3 +2,9 @@ li:hover {
     text-decoration: underline;
     cursor: pointer;
 }
+
+.categoryList {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}

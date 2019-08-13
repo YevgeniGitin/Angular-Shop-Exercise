@@ -1,4 +1,10 @@
-import { Component, OnInit, Output, EventEmitter } from "@angular/core";
+import {
+  Component,
+  OnInit,
+  AfterContentInit,
+  Output,
+  EventEmitter
+} from "@angular/core";
 import productsCategory from "../../assets/data/ProductCategory.json";
 
 interface Category {
@@ -15,7 +21,7 @@ interface Category {
 export class CategorysListComponent implements OnInit {
   @Output() products = new EventEmitter<object[]>(); //out put the products
 
-  data: Category[] = productsCategory;
+  data: Category[];
   constructor() {}
   //get category's products
   getCategorysProducts(category: Category) {
@@ -31,5 +37,7 @@ export class CategorysListComponent implements OnInit {
     this.products.emit(products);
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.data = productsCategory;
+  }
 }

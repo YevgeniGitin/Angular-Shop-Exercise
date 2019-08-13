@@ -5,9 +5,9 @@
 }
 
 .menu {
-    height: 33.1em;
-    width: 15%;
     background-color: rgb(205, 207, 207);
+    height: 33.1em;
+    width: 0;
     padding: 1em;
     display: flex;
     flex-direction: column;

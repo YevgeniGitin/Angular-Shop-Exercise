@@ -1,6 +1,8 @@
-<ul *ngFor="let category of data">
-    <li (click)="getCategorysProducts(category)"> {{ category.title }}</li>
-</ul>
-<ul>
-    <li (click)="getAllProducts()"> All categorys</li>
-</ul>
+<div class="categoryList">
+    <ul *ngFor="let category of data">
+        <li (click)="getCategorysProducts(category)"> {{ category.title }}</li>
+    </ul>
+    <ul>
+        <li (click)="getAllProducts()"> All categorys</li>
+    </ul>
+</div>
