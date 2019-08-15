@@ -1,12 +1,10 @@
 import { Component, OnInit, Output, EventEmitter} from "@angular/core";
 import productsCategory from "../../assets/data/ProductCategory.json";
 import{ trigger , state , style , animate , transition } from '@angular/animations';
+import{Category} from "../../modules/category";
+import {Product} from"../../modules/product";
 
-interface Category {
-  id: string;
-  title: string;
-  productarr: object[];
-}
+
 
 @Component({
   selector: "app-categorys-list",
@@ -20,7 +18,7 @@ interface Category {
   ])]
 })
 export class CategorysListComponent implements OnInit {
-  @Output() products = new EventEmitter<object[]>(); //out put the products
+  @Output() products = new EventEmitter<Product[]>(); //out put the products
 
   data: Category[];
   constructor() {}
@@ -30,7 +28,7 @@ export class CategorysListComponent implements OnInit {
   }
   //get all products
   getAllProducts() {
-    let products: object[] = new Array();
+    let products: Product[] = new Array();
     for (let i = 0; i < this.data.length; i++) {
       for (let j = 0; j < this.data[i].productarr.length; j++)
         products.push(this.data[i].productarr[j]);

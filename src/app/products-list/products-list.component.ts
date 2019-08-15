@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from "@angular/core";
 import{ trigger , state , style , animate , transition } from '@angular/animations';
+import {Product} from "../../modules/product";
 
 @Component({
   selector: "app-products-list",
@@ -13,11 +14,11 @@ import{ trigger , state , style , animate , transition } from '@angular/animatio
   ])]
 })
 export class ProductsListComponent implements OnInit {
-  @Input() productsArray: object[]; //get the products array
+  @Input() productsArray: Product[]; //get the products array
   isActive: boolean = true; //flag for each page to show prodact or list
-  product: object;
+  product: Product;
   //display the product
-  clickOnProduct(product) {
+  clickOnProduct(product:Product) {
     this.product = product;
     this.isActive = !this.isActive;
   }
