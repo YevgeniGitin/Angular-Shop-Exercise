@@ -29,13 +29,13 @@ export class CategorysListComponent implements OnInit {
   //get all products
   getAllProducts() {
     let products: Product[] = new Array();
-    for (let i = 0; i < this.data.length; i++) {
-      for (let j = 0; j < this.data[i].productarr.length; j++)
-        products.push(this.data[i].productarr[j]);
+    for(let category of this.data){
+      for(let item of category.productarr){
+        products.push(item);
+      }
     }
     this.products.emit(products);
   }
-
   ngOnInit() {
     this.data = productsCategory;
   }
