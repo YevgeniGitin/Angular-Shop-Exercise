@@ -7,7 +7,7 @@ import { Product } from "../../modules/product";
   styleUrls: ["./product-card.component.css"]
 })
 export class ProductCardComponent implements OnInit {
-  @Input() product: Product[];
+  @Input() product: Product; //get product
   constructor() {}
 
   ngOnInit() {}

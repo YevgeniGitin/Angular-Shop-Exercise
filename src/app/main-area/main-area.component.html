@@ -1,6 +1,7 @@
 <div [ngSwitch]="pageToOpen">
     <app-about *ngSwitchCase="'about'"></app-about>
-    <app-categorys-list *ngSwitchCase="'categorys'" (products)="recivedProducts($event)"></app-categorys-list>
-    <app-products-list *ngSwitchCase="'products'" (product)="recivedProduct($event)" [productsArray]="products"></app-products-list>
+    <app-categorys-list *ngSwitchCase="'categorys'" (categorySelection)="recivedProducts($event)"></app-categorys-list>
+    <app-products-list *ngSwitchCase="'products'" [categorySelection]="categorySelection" [action]='true'></app-products-list>
+    <app-shopping-card *ngSwitchCase="'shoppingCart'"></app-shopping-card>
     <app-home *ngSwitchDefault></app-home>
 </div>

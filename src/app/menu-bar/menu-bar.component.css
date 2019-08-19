@@ -4,6 +4,28 @@ button {
     border: none;
 }
 
+.card {
+    width: 3em;
+    height: 3em;
+    background: none;
+    position: relative;
+}
+
+.card:hover {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+img {
+    width: 100%;
+}
+
+.card-bucket_count {
+    background: none;
+    width: 100%;
+    height: 1em;
+}
+
 button:hover {
     text-decoration: underline;
     cursor: pointer;

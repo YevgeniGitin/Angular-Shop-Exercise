@@ -2,4 +2,8 @@
 <button (click)="openAbout()">About</button>
 <button (click)="openProducts()">Product list</button>
 <button>Contact</button>
+<button class="card" (click)="openShoppingCart()">
+  <div class="card-bucket_count">{{p}}</div>
+  <img src="../../assets/img/bucket.png" alt="buy bucket link" />
+</button>
 <app-social-links></app-social-links>

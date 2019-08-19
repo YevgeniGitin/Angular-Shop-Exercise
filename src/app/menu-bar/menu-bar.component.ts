@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from "@angular/core";
+import { CartService } from "../cart.service";
 
 @Component({
   selector: "app-menu-bar",
@@ -7,7 +8,12 @@ import { Component, OnInit, Output, EventEmitter } from "@angular/core";
 })
 export class MenuBarComponent implements OnInit {
   @Output() choosePage = new EventEmitter<string>();
-  constructor() {}
+  constructor(private cartService:CartService) {}
+  p:number=this.cartService.getCount();
+
+  openShoppingCart(){
+    this.choosePage.emit("shoppingCart");
+  }
   //open home page
   openHome() {
     this.choosePage.emit("home");

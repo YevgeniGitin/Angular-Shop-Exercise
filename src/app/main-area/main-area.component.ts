@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
+import { DataService } from "../data.service";
 
 
 @Component({
@@ -9,19 +10,13 @@ import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 export class MainAreaComponent implements OnInit {
   @Input() pageToOpen: string;
   @Output() open = new EventEmitter<string>(); //out put the pege to open for menu flag cange
-  products: object[];
-  product: object;
-  //get the products array from category list and switch to broducts list
-  recivedProducts(e: object[]) {
-    this.products = e;
+  categorySelection:string;
+  //get the id of a clicked category
+  recivedProducts(e: string) {
+    this.categorySelection=e;
     this.open.emit("products");
   }
-  //get the clicked product
-  recivedProduct(e) {
-    this.product = e;
-    this.open.emit("products-display");
-  }
-  constructor() {}
+  constructor(private dataService: DataService) {}
 
   ngOnInit() {}
 }

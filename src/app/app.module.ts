@@ -15,6 +15,7 @@ import { ProductCardComponent } from "./product-card/product-card.component";
 import { HomeComponent } from "./home/home.component";
 import { AboutComponent } from "./about/about.component";
 import { ContentProjectionLinkComponent } from './content-projection-link/content-projection-link.component';
+import { ShoppingCardComponent } from './shopping-card/shopping-card.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { ContentProjectionLinkComponent } from './content-projection-link/conten
     HomeComponent,
     AboutComponent,
     ContentProjectionLinkComponent,
+    ShoppingCardComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule],
   providers: [],

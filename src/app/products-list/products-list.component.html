@@ -1,4 +1,4 @@
 <div *ngIf="isActive" class="cards_box" [@fadeInOut]>
     <app-product-card *ngFor="let product of productsArray" [product]="product" (click)="clickOnProduct(product)"></app-product-card>
 </div>
-<app-product-display *ngIf="!isActive" [product]="product" (back)="back()"></app-product-display>
+<app-product-display *ngIf="!isActive" [product]="productSelection" [action]="action" (back)="back()"></app-product-display>
