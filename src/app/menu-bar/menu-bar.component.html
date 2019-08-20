@@ -1,9 +1,11 @@
 <button (click)="openHome()">HomePage</button>
 <button (click)="openAbout()">About</button>
 <button (click)="openProducts()">Product list</button>
+<button *ngIf="this.userService.logInFlag" (click)="logIn()">Login</button>
+<button *ngIf="!this.userService.logInFlag" (click)="logOut()">LogOut</button>
 <button>Contact</button>
-<button class="card" (click)="openShoppingCart()">
-  <div class="card-bucket_count">{{p}}</div>
+<button *ngIf="!this.userService.logInFlag" class="card" (click)="openShoppingCart()">
+  <div class="card-bucket_count">{{count}}</div>
   <img src="../../assets/img/bucket.png" alt="buy bucket link" />
 </button>
 <app-social-links></app-social-links>

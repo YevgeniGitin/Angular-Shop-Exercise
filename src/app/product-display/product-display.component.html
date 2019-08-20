@@ -9,7 +9,7 @@
         <p>{{product.Description}}</p>
     </div>
     <div class="card_buttons">
-        <button *ngIf="action" (click)="addItem(product)">Add to card</button>
-        <button *ngIf="!action" (click)="removeItem(product)">Remove from card</button>
+        <button *ngIf="action && !this.userService.logInFlag" (click)="addItem(product)">Add to card</button>
+        <button *ngIf="!action && !this.userService.logInFlag" (click)="removeItem(product)">Remove from card</button>
     </div>
 </div>

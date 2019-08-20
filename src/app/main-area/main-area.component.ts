@@ -16,6 +16,10 @@ export class MainAreaComponent implements OnInit {
     this.categorySelection=e;
     this.open.emit("products");
   }
+
+  switchPage(e:string){
+    this.open.emit("e");
+  }
   constructor(private dataService: DataService) {}
 
   ngOnInit() {}

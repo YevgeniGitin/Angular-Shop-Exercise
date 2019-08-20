@@ -3,5 +3,6 @@
     <app-categorys-list *ngSwitchCase="'categorys'" (categorySelection)="recivedProducts($event)"></app-categorys-list>
     <app-products-list *ngSwitchCase="'products'" [categorySelection]="categorySelection" [action]='true'></app-products-list>
     <app-shopping-card *ngSwitchCase="'shoppingCart'"></app-shopping-card>
+    <app-log-in-form *ngSwitchCase="'logIn'" (open)="switchPage($event)"></app-log-in-form>
     <app-home *ngSwitchDefault></app-home>
 </div>

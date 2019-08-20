@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from "@angular/core";
 import { CartService } from "../cart.service";
+import { UserService } from "../user.service";
 
 @Component({
   selector: "app-menu-bar",
@@ -8,8 +9,8 @@ import { CartService } from "../cart.service";
 })
 export class MenuBarComponent implements OnInit {
   @Output() choosePage = new EventEmitter<string>();
-  constructor(private cartService:CartService) {}
-  p:number=this.cartService.getCount();
+  constructor(private cartService:CartService,private userService:UserService) {}
+  count:number=this.cartService.getCount();
 
   openShoppingCart(){
     this.choosePage.emit("shoppingCart");
@@ -25,6 +26,13 @@ export class MenuBarComponent implements OnInit {
   //open categorys page
   openProducts() {
     this.choosePage.emit("categorys");
+  }
+  logIn(){
+    this.choosePage.emit("logIn");
+  }
+  logOut(){
+    this.userService.logInFlag=true;
+    this.choosePage.emit("home");
   }
 
   ngOnInit() {}

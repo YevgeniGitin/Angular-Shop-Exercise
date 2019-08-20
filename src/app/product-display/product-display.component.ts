@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { trigger, state, style, animate, transition} from "@angular/animations";
 import { Product } from "../../modules/product";
 import { CartService } from "../cart.service";
+import { UserService } from '../user.service';
 
 @Component({
   selector: "app-product-display",
@@ -19,7 +20,7 @@ export class ProductDisplayComponent implements OnInit {
   @Input() action:boolean;
   @Output() back = new EventEmitter<void>(); //go back to list
 
-  constructor(private cartService:CartService) {}
+  constructor(private cartService:CartService,private userService:UserService) {}
 
   addItem(product:Product){
     this.cartService.addProduct(product);

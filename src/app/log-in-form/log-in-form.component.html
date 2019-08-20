@@ -1,0 +1,10 @@
+<div class="logIn">
+    <h1>LogIn</h1>
+    <form (ngSubmit)="onSubmit()" #logInForm="ngForm">
+        <input name="userName" type="text" placeholder="User Name" [(ngModel)]="userName" #usernameInput="ngModel" required minlength="3">
+        <span [hidden]="!usernameInput.errors?.minlength || usernameInput.pristine">user name mus include at list 3 characters!</span>
+        <input name="password" type="password" placeholder="Password" [(ngModel)]="password" #passwordInput="ngModel" required minlength="3">
+        <span [hidden]="!passwordInput.errors?.minlength || passwordInput.pristine">password mus include at list 3 characters!</span>
+        <button [disabled]="!logInForm.form.valid" type="submit">LogIn</button>
+    </form>
+</div>

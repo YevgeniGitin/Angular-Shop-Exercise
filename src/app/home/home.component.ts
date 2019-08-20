@@ -1,5 +1,6 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit} from "@angular/core";
 import{ trigger , state , style , animate , transition } from "@angular/animations";
+import { UserService } from '../user.service';
 
 @Component({
   selector: "app-home",
@@ -10,8 +11,10 @@ import{ trigger , state , style , animate , transition } from "@angular/animatio
     transition("void <=> *", animate("1.5s")),
   ])]
 })
-export class HomeComponent implements OnInit {
-  constructor() {}
+export class HomeComponent implements OnInit{
+  name:string=this.userService.loadName();
+  constructor(private userService:UserService) {}
 
-  ngOnInit() {}
+  ngOnInit() { }
+
 }
