@@ -16,14 +16,14 @@ export class LogInFormComponent implements OnInit {
 
   onSubmit(){
     let user:User=this.userService.loadUserByUserName(this.userName);
-    if(user===undefined){
+    if(user===undefined){//check if the user name is true
       alert("no such user name");
-    }else if(user.password!==this.password){
+    }else if(user.password!==this.password){ //check the password
       alert("Password is incorrect");
-    }else{
+    }else{//corect data change status of log in and save the loged in user
       this.userService.logInFlag=false;
       this.userService.connectUser=user;
-      if(this.userService.connectUser.permission==="admin"){
+      if(this.userService.connectUser.permission==="admin"){//check if the user is admin if yes give permission 
         this.userService.isAdmin=true;
       }else{
         this.userService.isAdmin=false;

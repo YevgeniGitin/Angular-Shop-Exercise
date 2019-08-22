@@ -18,6 +18,7 @@ import { ContentProjectionLinkComponent } from './content-projection-link/conten
 import { ShoppingCardComponent } from './shopping-card/shopping-card.component';
 import { LogInFormComponent } from './log-in-form/log-in-form.component';
 import { ProductFormComponent } from './product-form/product-form.component';
+import { ContactFormComponent } from './contact-form/contact-form.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { ProductFormComponent } from './product-form/product-form.component';
     ShoppingCardComponent,
     LogInFormComponent,
     ProductFormComponent,
+    ContactFormComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule,FormsModule,ReactiveFormsModule],
   providers: [],

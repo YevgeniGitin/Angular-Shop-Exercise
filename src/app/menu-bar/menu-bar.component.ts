@@ -30,6 +30,7 @@ export class MenuBarComponent implements OnInit {
   logIn(){
     this.choosePage.emit("logIn");
   }
+  //change the flags of permisions and login and go to home page
   logOut(){
     this.userService.logInFlag=true;
     this.userService.isAdmin=false;

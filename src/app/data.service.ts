@@ -15,23 +15,23 @@ export class DataService {
   loadCategorys():Category[]{
     return this.data;
   }
-  
+  //add product to the data
   addProduct(product:Product){
     let categoryIndex=this.data.findIndex(o=>o.id===product.CategoryId);
     this.data[categoryIndex].productarr.push(product);
   }
-
+//delete product from the data
   deleteProduct(product:Product){
     let categoryIndex=this.data.findIndex(o=>o.id===product.CategoryId);
     let productIndex= this.data[categoryIndex].productarr.findIndex(o=>o===product)
     this.data[categoryIndex].productarr.splice(productIndex, 1);
   }
-
+//load products of one category
   loadCategoryProdacts(id:string):Product[]{
     let category:Category=this.data.find(o => o.id === id);
     return category.productarr;
   }
-
+//load all products
   loadAllProducts():Product[] {
     let products: Product[] = new Array();
     for(let category of this.data){

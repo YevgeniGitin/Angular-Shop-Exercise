@@ -17,11 +17,11 @@ import { UserService } from '../user.service';
 export class ProductsListComponent implements OnInit,OnChanges {
   @Input() categorySelection: string; //get what kind data to load
   @Input() action:boolean; //what action to allow add or remove
+  @Input() fromShopingCard:boolean=false; //show edit button if enter not from shoping card
   productsArray: Product[];//products array
   isActive: boolean = true; //flag for each page to show prodact or list
-  editselect:boolean=false;
-  selectedProduct:Product;
-  productSelection: Product;
+  editselect:boolean=false;//flag if it edit product
+  productSelection: Product;//selected product
   //display the product
   clickOnProduct(product:Product) {
     this.productSelection = product;
@@ -42,14 +42,15 @@ export class ProductsListComponent implements OnInit,OnChanges {
   back() {
     this.isActive = !this.isActive;
   }
+  //change flags to go back to the list of products
   backFromEdit(){
     this.isActive =true;
     this.editselect=false;
   }
-
+  // click on edit button and sweech the flag and send the selected product
   editProduct(product:Product){
     this.editselect=true;
-    this.selectedProduct=product;
+    this.productSelection=product;
    }
 
   constructor(private dataService: DataService,private cartService:CartService, private userService:UserService) {}
