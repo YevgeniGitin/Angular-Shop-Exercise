@@ -4,7 +4,7 @@
 <button *ngIf="this.userService.logInFlag" (click)="logIn()">Login</button>
 <button *ngIf="!this.userService.logInFlag" (click)="logOut()">LogOut</button>
 <button *ngIf="this.userService.isAdmin" (click)="addProduct()">Add new products</button>
-<button>Contact</button>
+<button (click)="contactForm()">Contact</button>
 <button *ngIf="!this.userService.logInFlag" class="card" (click)="openShoppingCart()">
   <div class="card-bucket_count">{{count}}</div>
   <img src="../../assets/img/bucket.png" alt="buy bucket link" />

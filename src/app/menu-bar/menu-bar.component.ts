@@ -36,6 +36,9 @@ export class MenuBarComponent implements OnInit {
     this.userService.isAdmin=false;
     this.choosePage.emit("home");
   }
+  contactForm(){
+    this.choosePage.emit("contactForm");
+  }
 
   addProduct(){
     this.choosePage.emit("addProduct");
