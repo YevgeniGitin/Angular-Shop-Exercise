@@ -32,7 +32,12 @@ export class MenuBarComponent implements OnInit {
   }
   logOut(){
     this.userService.logInFlag=true;
+    this.userService.isAdmin=false;
     this.choosePage.emit("home");
+  }
+
+  addProduct(){
+    this.choosePage.emit("addProduct");
   }
 
   ngOnInit() {}

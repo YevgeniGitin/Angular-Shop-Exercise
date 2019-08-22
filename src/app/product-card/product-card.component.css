@@ -5,6 +5,8 @@
 
 .card:hover {
     background-color: rgb(139, 138, 138);
+    cursor: pointer;
+    border: 1px solid black;
 }
 
 .card_info {

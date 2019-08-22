@@ -23,6 +23,11 @@ export class LogInFormComponent implements OnInit {
     }else{
       this.userService.logInFlag=false;
       this.userService.connectUser=user;
+      if(this.userService.connectUser.permission==="admin"){
+        this.userService.isAdmin=true;
+      }else{
+        this.userService.isAdmin=false;
+      }
       this.open.emit("home");
     }
   }

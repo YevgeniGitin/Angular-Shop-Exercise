@@ -1,7 +1,7 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { FormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { HeaderComponent } from "./header/header.component";
@@ -17,6 +17,7 @@ import { AboutComponent } from "./about/about.component";
 import { ContentProjectionLinkComponent } from './content-projection-link/content-projection-link.component';
 import { ShoppingCardComponent } from './shopping-card/shopping-card.component';
 import { LogInFormComponent } from './log-in-form/log-in-form.component';
+import { ProductFormComponent } from './product-form/product-form.component';
 
 @NgModule({
   declarations: [
@@ -34,8 +35,9 @@ import { LogInFormComponent } from './log-in-form/log-in-form.component';
     ContentProjectionLinkComponent,
     ShoppingCardComponent,
     LogInFormComponent,
+    ProductFormComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule,FormsModule],
+  imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule,FormsModule,ReactiveFormsModule],
   providers: [],
   bootstrap: [AppComponent]
 })

@@ -3,6 +3,7 @@ import{ trigger , state , style , animate , transition } from "@angular/animatio
 import {Product} from "../../modules/product";
 import { DataService } from "../data.service";
 import { CartService } from "../cart.service";
+import { UserService } from '../user.service';
 
 @Component({
   selector: "app-products-list",
@@ -18,7 +19,8 @@ export class ProductsListComponent implements OnInit,OnChanges {
   @Input() action:boolean; //what action to allow add or remove
   productsArray: Product[];//products array
   isActive: boolean = true; //flag for each page to show prodact or list
-
+  editselect:boolean=false;
+  selectedProduct:Product;
   productSelection: Product;
   //display the product
   clickOnProduct(product:Product) {
@@ -40,8 +42,17 @@ export class ProductsListComponent implements OnInit,OnChanges {
   back() {
     this.isActive = !this.isActive;
   }
+  backFromEdit(){
+    this.isActive =true;
+    this.editselect=false;
+  }
 
-  constructor(private dataService: DataService,private cartService:CartService) {}
+  editProduct(product:Product){
+    this.editselect=true;
+    this.selectedProduct=product;
+   }
+
+  constructor(private dataService: DataService,private cartService:CartService, private userService:UserService) {}
 
   ngOnInit() {}
 }

@@ -1,4 +1,8 @@
-<div *ngIf="isActive" class="cards_box" [@fadeInOut]>
-    <app-product-card *ngFor="let product of productsArray" [product]="product" (click)="clickOnProduct(product)"></app-product-card>
+<div *ngIf="isActive && !editselect" class="cards_box" [@fadeInOut]>
+    <div class="card-div" *ngFor="let product of productsArray">
+        <app-product-card [product]="product" (click)="clickOnProduct(product)"></app-product-card>
+        <button *ngIf="this.userService.isAdmin" (click)="editProduct(product)">edit</button>
+    </div>
 </div>
-<app-product-display *ngIf="!isActive" [product]="productSelection" [action]="action" (back)="back()"></app-product-display>
+<app-product-form *ngIf="editselect" [selectedProduct]="selectedProduct" (backEdit)="backFromEdit()"></app-product-form>
+<app-product-display *ngIf="!isActive && !editselect" [product]="productSelection" [action]="action" (back)="back()"></app-product-display>

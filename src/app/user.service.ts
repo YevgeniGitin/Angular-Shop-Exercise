@@ -8,6 +8,7 @@ export class UserService {
   private _logInFlag:boolean=true;//flag some one is loged in true=not
   private _connectUser:User;//save user that is loged in
   private _userIndex:number;//index of user in the array
+  private _isAdmin:boolean=false;
   //users array
   users:User[]=[
     {
@@ -26,6 +27,13 @@ export class UserService {
     }
   ];
   constructor() { }
+
+  get isAdmin():boolean{
+    return this._isAdmin;
+  }
+  set isAdmin(flag:boolean){
+    this._isAdmin=flag;
+  }
 
   get userIndex():number{
     return this._userIndex;
