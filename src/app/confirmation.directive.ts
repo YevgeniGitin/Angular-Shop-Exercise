@@ -6,16 +6,16 @@ import { Directive, Input, HostListener, Output, EventEmitter } from '@angular/c
 export class ConfirmationDirective {
 
   @Input() appConfirmation:string;
-  @Output() confirmation= new EventEmitter<string>();
+  @Output() confirmation= new EventEmitter<boolean>();
 
   constructor() { }
 
   @HostListener('click') 
   askConfirmation(event: MouseEvent) {
     if(confirm(this.appConfirmation)) {
-     this.confirmation.emit("User confirmed");
+      this.confirmation.emit(true);
     }else{
-      this.confirmation.emit("User did not confirmed");
+      this.confirmation.emit(false);
     }
 
   }
