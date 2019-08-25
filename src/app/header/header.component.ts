@@ -1,4 +1,5 @@
-import { Component, OnInit, Output, EventEmitter } from "@angular/core";
+import { Component, OnInit, Output, EventEmitter} from "@angular/core";
+import { LocalizationService } from '../localization.service';
 
 @Component({
   selector: "app-header",
@@ -6,13 +7,21 @@ import { Component, OnInit, Output, EventEmitter } from "@angular/core";
   styleUrls: ["./header.component.css"]
 })
 export class HeaderComponent implements OnInit {
+  constructor( private localizationService:LocalizationService) {}
   @Output() menu = new EventEmitter<void>(); //out put the menu flag(open or close)
+  @Output() selectedLanguage = new EventEmitter<string>(); //out put the language
   menuflag: boolean = false;
+  language:string="EN";
+  languages:string[]=this.localizationService.languages;
 
-  constructor() {}
+  
   openmenu() {
     this.menu.emit(); //out put the menu flag(open or close)
   }
+  changeLanguage(){
+    this.selectedLanguage.emit(this.language);
+  }
 
   ngOnInit() {}
+  
 }

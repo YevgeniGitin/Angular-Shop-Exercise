@@ -19,6 +19,7 @@ import { ShoppingCardComponent } from './shopping-card/shopping-card.component';
 import { LogInFormComponent } from './log-in-form/log-in-form.component';
 import { ProductFormComponent } from './product-form/product-form.component';
 import { ContactFormComponent } from './contact-form/contact-form.component';
+import { TranslationPipe } from './translation.pipe';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { ContactFormComponent } from './contact-form/contact-form.component';
     LogInFormComponent,
     ProductFormComponent,
     ContactFormComponent,
+    TranslationPipe,
   ],
   imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule,FormsModule,ReactiveFormsModule],
   providers: [],

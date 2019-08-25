@@ -12,7 +12,7 @@ import {trigger,state,style,transition,animate} from "@angular/animations";
           width: "15%",
         })
       ),
-      transition("open <=> void", animate("0.6s")), // speed, delay, ease-out/ease-in
+      transition("open => void", animate("0.6s")), // speed, delay, ease-out/ease-in
       transition("void => *", animate("0.2s"))
     ])
   ]
@@ -21,6 +21,7 @@ export class AppComponent {
   showMenu: boolean = false; //flag to show menu
   pageToOpen: string; //wich page to open
   currentState: string;
+  selectedLanguage:string="EN";
   //open or close the menu
   recivedMenuClick() {
     this.showMenu = !this.showMenu;
@@ -29,6 +30,10 @@ export class AppComponent {
   //flag to main area to open the page
   switchPage(e) {
     this.pageToOpen = e;
+  }
+  getLanguage(e){
+    this.selectedLanguage=e;
+
   }
   closeMenu() {
     this.showMenu = false;

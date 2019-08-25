@@ -41,3 +41,11 @@ app-social-links {
     top: 17%;
     right: 0%;
 }
+
+select {
+    position: absolute;
+    background-color: rgb(147, 148, 148);
+    top: 24%;
+    right: 6em;
+    z-index: 1;
+}
