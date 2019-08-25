@@ -18,6 +18,9 @@ export class ContactFormComponent implements OnInit {
     console.log(this.message);
     alert("The form was sent")
   }
+  confirmation(e){
+    console.log(e);
+  }
 
   ngOnInit() {
   }

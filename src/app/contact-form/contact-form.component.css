@@ -26,6 +26,10 @@ textarea {
     margin-top: 1em;
 }
 
+textarea {
+    width: 70%
+}
+
 button {
     margin: 1em 0;
     width: 5em;

@@ -20,6 +20,7 @@ import { LogInFormComponent } from './log-in-form/log-in-form.component';
 import { ProductFormComponent } from './product-form/product-form.component';
 import { ContactFormComponent } from './contact-form/contact-form.component';
 import { TranslationPipe } from './translation.pipe';
+import { ConfirmationDirective } from './confirmation.directive';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { TranslationPipe } from './translation.pipe';
     ProductFormComponent,
     ContactFormComponent,
     TranslationPipe,
+    ConfirmationDirective,
   ],
   imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule,FormsModule,ReactiveFormsModule],
   providers: [],
