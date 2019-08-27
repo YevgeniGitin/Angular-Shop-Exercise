@@ -2,6 +2,7 @@
         "id": "d2799801-acab-11e9-9692-8f8fe6f83dba",
         "title": "Watches",
         "productarr": [{
+                "ProductId": "poiuy098765fdsa654nb",
                 "CategoryId": "d2799801-acab-11e9-9692-8f8fe6f83dba",
                 "Image": "assets/img/1.png",
                 "Title": "first item",
@@ -9,6 +10,7 @@
                 "Description": "Description"
             },
             {
+                "ProductId": "234132fdsetvfdertbhf",
                 "CategoryId": "d2799801-acab-11e9-9692-8f8fe6f83dba",
                 "Image": "assets/img/2.png",
                 "Title": "second item",
@@ -16,6 +18,7 @@
                 "Description": "Description"
             },
             {
+                "ProductId": "pqowieuro9634srt63by",
                 "CategoryId": "d2799801-acab-11e9-9692-8f8fe6f83dba",
                 "Image": "assets/img/3.png",
                 "Title": "hi item",
@@ -28,6 +31,7 @@
         "id": "d6ebbf31-acab-11e9-9692-8f8fe6f83dba",
         "title": "Smartphones",
         "productarr": [{
+                "ProductId": "mnbvcxz567hgf567uytr",
                 "CategoryId": "d6ebbf31-acab-11e9-9692-8f8fe6f83dba",
                 "Image": "assets/img/4.png",
                 "Title": "first item",
@@ -35,6 +39,7 @@
                 "Description": "Description"
             },
             {
+                "ProductId": "65748gtusbvt32rst5hs",
                 "CategoryId": "d6ebbf31-acab-11e9-9692-8f8fe6f83dba",
                 "Image": "assets/img/5.png",
                 "Title": "second",

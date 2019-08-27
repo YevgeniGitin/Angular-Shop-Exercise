@@ -27,10 +27,6 @@ export class AppComponent {
     this.showMenu = !this.showMenu;
     this.currentState = "open";
   }
-  //flag to main area to open the page
-  switchPage(e) {
-    this.pageToOpen = e;
-  }
   getLanguage(e){
     this.selectedLanguage=e;
 

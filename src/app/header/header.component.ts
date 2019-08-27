@@ -10,7 +10,7 @@ export class HeaderComponent implements OnInit {
   constructor( private localizationService:LocalizationService) {}
   @Output() menu = new EventEmitter<void>(); //out put the menu flag(open or close)
   @Output() selectedLanguage = new EventEmitter<string>(); //out put the language
-  menuflag: boolean = false;
+  menuflag: boolean = false;//to show the manu or not
   language:string="EN";
   languages:string[]=this.localizationService.languages;
 

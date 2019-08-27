@@ -1,7 +1,8 @@
-import { Component, OnInit, Output, EventEmitter } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { trigger, state, style, animate, transition} from "@angular/animations";
 import { Category } from "../../modules/category";
 import { DataService } from "../data.service";
+import { Router } from '@angular/router';
 
 @Component({
   selector: "app-categorys-list",
@@ -15,17 +16,15 @@ import { DataService } from "../data.service";
   ]
 })
 export class CategorysListComponent implements OnInit {
-  @Output() categorySelection = new EventEmitter<string>(); //out put the category's id
-
   data: Category[];
-  constructor(private dataService: DataService) {}
+  constructor(private dataService: DataService,private router: Router) {}
   //get category's products
   getCategorysProducts(category: Category) {
-    this.categorySelection.emit(category.id);
+    this.router.navigate(["products-list",category.id,true]);
   }
   //get all products
   getAllProducts() {
-    this.categorySelection.emit("allProducts");
+    this.router.navigate(["products-list","allProducts",true]);
   }
   //init firs data to present
   ngOnInit() {

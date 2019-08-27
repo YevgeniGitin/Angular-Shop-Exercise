@@ -9,8 +9,24 @@ import {Product} from"../modules/product";
 })
 export class DataService {
  private data:Category[]=productsCategorys;
+  _selectedProduct:Product;
 
   constructor() { }
+
+  get selectedProduct():Product{
+    return  this._selectedProduct;
+  }
+
+  set selectedProduct(product:Product){
+    this._selectedProduct=product;
+  }
+
+  getProductByid(id:string):Product{
+    let products:Product[]=this.loadAllProducts();
+    return products.find(item=> item.ProductId===id);
+
+  }
+  
 //load all categorys
   loadCategorys():Category[]{
     return this.data;

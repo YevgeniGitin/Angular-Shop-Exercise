@@ -1,6 +1,7 @@
-import { Component, OnInit, Output, EventEmitter, Input } from "@angular/core";
+import { Component, OnInit, Input } from "@angular/core";
 import { CartService } from "../cart.service";
 import { UserService } from "../user.service";
+import { Router } from '@angular/router';
 
 @Component({
   selector: "app-menu-bar",
@@ -9,42 +10,18 @@ import { UserService } from "../user.service";
 })
 export class MenuBarComponent implements OnInit {
   @Input() selectedLanguage:string;
-  @Output() choosePage = new EventEmitter<string>();
-  constructor(private cartService:CartService,private userService:UserService) {}
+  constructor(private cartService:CartService,private userService:UserService, private router: Router) {}
   count:number=this.cartService.getCount();
 
   openShoppingCart(){
-    this.choosePage.emit("shoppingCart");
-  }
-  //open home page
-  openHome() {
-    this.choosePage.emit("home");
-  }
-  //open about page
-  openAbout() {
-    this.choosePage.emit("about");
-  }
-  //open categorys page
-  openProducts() {
-    this.choosePage.emit("categorys");
-  }
-  logIn(){
-    this.choosePage.emit("logIn");
+    this.router.navigate(["shopping-card","shoppingCard",false]);
   }
   //change the flags of permisions and login and go to home page
   logOut(){
     this.userService.logInFlag=true;
     this.userService.isAdmin=false;
-    this.choosePage.emit("home");
+    this.router.navigate(["home"]);
   }
-  contactForm(){
-    this.choosePage.emit("contactForm");
-  }
-
-  addProduct(){
-    this.choosePage.emit("addProduct");
-  }
-
   ngOnInit() {
   }
 }

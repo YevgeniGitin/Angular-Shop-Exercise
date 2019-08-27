@@ -1,6 +1,7 @@
 import { Component, OnInit, EventEmitter, Output } from "@angular/core";
 import { UserService } from "../user.service";
 import { User } from 'src/modules/user';
+import { Router } from '@angular/router';
 
 @Component({
   selector: "app-log-in-form",
@@ -8,11 +9,10 @@ import { User } from 'src/modules/user';
   styleUrls: ["./log-in-form.component.css"]
 })
 export class LogInFormComponent implements OnInit {
-  @Output() open = new EventEmitter<string>();
   userName:string;
   password:string;
 
-  constructor(private userService:UserService) { }
+  constructor(private userService:UserService,private router: Router) { }
 
   onSubmit(){
     let user:User=this.userService.loadUserByUserName(this.userName);
@@ -28,7 +28,7 @@ export class LogInFormComponent implements OnInit {
       }else{
         this.userService.isAdmin=false;
       }
-      this.open.emit("home");
+      this.router.navigate(["home"]);
     }
   }
 

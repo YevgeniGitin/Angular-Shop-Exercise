@@ -1,5 +1,6 @@
 button {
     margin-bottom: 1em;
+    padding: 0;
     background: none;
     border: none;
 }
@@ -33,6 +34,11 @@ button:hover {
 
 button:focus {
     outline: none;
+}
+
+.active,
+.active>img {
+    background-color: rgb(120, 120, 121);
 }
 
 app-social-links {

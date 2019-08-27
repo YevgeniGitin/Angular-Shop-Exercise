@@ -1,7 +1,10 @@
-import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { trigger, state, style, animate, transition} from "@angular/animations";
 import { Product } from "../../modules/product";
 import { CartService } from "../cart.service";
+import { ActivatedRoute } from '@angular/router';
+import { DataService } from '../data.service';
+import{ Location } from '@angular/common';
 import { UserService } from '../user.service';
 
 @Component({
@@ -16,11 +19,10 @@ import { UserService } from '../user.service';
   ]
 })
 export class ProductDisplayComponent implements OnInit {
-  @Input() product: Product; //get the product to show
-  @Input() action:boolean;
-  @Output() back = new EventEmitter<void>(); //go back to list
+  product: Product; //get the product to show
+  action:boolean=(this.route.snapshot.paramMap.get("action")==="true");
 
-  constructor(private cartService:CartService,private userService:UserService) {}
+  constructor(private cartService:CartService,private userService:UserService,private route: ActivatedRoute, private dataService:DataService, private location : Location ) {}
 
   addItem(product:Product){
     this.cartService.addProduct(product);
@@ -29,13 +31,15 @@ export class ProductDisplayComponent implements OnInit {
 
   removeItem(product){
     this.cartService.removeFromCard(product);
-    this.back.emit();
+    this.location.back();
   }
 
   goBack() {
-    this.back.emit();
+    this.location.back();
   }
-
-
-  ngOnInit() {}
+  
+  ngOnInit() {
+    const id=this.route.snapshot.paramMap.get("id");
+    this.product=this.dataService.getProductByid(id);
+  }
 }

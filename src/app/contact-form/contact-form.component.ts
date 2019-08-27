@@ -9,7 +9,7 @@ export class ContactFormComponent implements OnInit {
   email:string;
   subject:string;
   message:string;
-  choose:boolean;
+  choose:boolean;//user confirmed send the form or not
 
   constructor() { }
   send(){
@@ -25,6 +25,7 @@ export class ContactFormComponent implements OnInit {
     }
     
   }
+  //user confirmed send the form or not
   confirmation(e){
     this.choose=e;
   }
