@@ -1,8 +1,8 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div class="all_site" (wheel)="closeMenu()">
-    <app-menu-bar *ngIf=showMenu (choosePage)="switchPage($event)" class="menu" [selectedLanguage]="selectedLanguage" [@menuBar]="currentState"></app-menu-bar>
+    <app-menu-bar *ngIf=showMenu (choosePage)="switchPage($event)" class="menu" [@menuBar]="currentState"></app-menu-bar>
     <div class="container" (mouseover)="closeMenu()">
-        <app-header class="header" (menu)="recivedMenuClick($event)" (selectedLanguage)="getLanguage($event)"></app-header>
+        <app-header class="header" (menu)="recivedMenuClick($event)"></app-header>
         <app-main-area class="main-area-style" (open)="switchPage($event)" [pageToOpen]="pageToOpen"></app-main-area>
     </div>
 </div>

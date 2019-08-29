@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter, Input } from "@angular/core";
 import { CartService } from "../cart.service";
 import { UserService } from "../user.service";
+import { LocalizationService } from '../localization.service';
 
 @Component({
   selector: "app-menu-bar",
@@ -8,9 +9,8 @@ import { UserService } from "../user.service";
   styleUrls: ["./menu-bar.component.css"]
 })
 export class MenuBarComponent implements OnInit {
-  @Input() selectedLanguage:string;
   @Output() choosePage = new EventEmitter<string>();
-  constructor(private cartService:CartService,private userService:UserService) {}
+  constructor(private cartService:CartService,private userService:UserService,private localizationService:LocalizationService) {}
   count:number=this.cartService.getCount();
 
   openShoppingCart(){

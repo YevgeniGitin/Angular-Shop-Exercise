@@ -1,10 +1,10 @@
-<button (click)="openHome()">{{'HomePage'|translation:this.selectedLanguage}}</button>
-<button (click)="openAbout()">{{'About'|translation:this.selectedLanguage}}</button>
-<button (click)="openProducts()">{{'Product list'|translation:this.selectedLanguage}}</button>
-<button *ngIf="this.userService.logInFlag" (click)="logIn()">{{'Login'|translation:this.selectedLanguage}}</button>
-<button *ngIf="!this.userService.logInFlag" (click)="logOut()">{{'LogOut'|translation:this.selectedLanguage}}</button>
-<button *ngIf="this.userService.isAdmin" (click)="addProduct()">{{'Add new products'|translation:this.selectedLanguage}}</button>
-<button (click)="contactForm()">{{'Contact'|translation:this.selectedLanguage}}</button>
+<button (click)="openHome()">{{'HomePage'|translation:this.localizationService.selectedLanguage}}</button>
+<button (click)="openAbout()">{{'About'|translation:this.localizationService.selectedLanguage}}</button>
+<button (click)="openProducts()">{{'Product list'|translation:this.localizationService.selectedLanguage}}</button>
+<button *ngIf="this.userService.logInFlag" (click)="logIn()">{{'Login'|translation:this.localizationService.selectedLanguage}}</button>
+<button *ngIf="!this.userService.logInFlag" (click)="logOut()">{{'LogOut'|translation:this.localizationService.selectedLanguage}}</button>
+<button *ngIf="this.userService.isAdmin" (click)="addProduct()">{{'Add new products'|translation:this.localizationService.selectedLanguage}}</button>
+<button (click)="contactForm()">{{'Contact'|translation:this.localizationService.selectedLanguage}}</button>
 <button *ngIf="!this.userService.logInFlag" class="card" (click)="openShoppingCart()">
   <div class="card-bucket_count">{{count}}</div>
   <img src="../../assets/img/bucket.png" alt="buy bucket link" />
