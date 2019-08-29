@@ -9,7 +9,6 @@ import { LocalizationService } from '../localization.service';
 export class HeaderComponent implements OnInit {
   constructor( private localizationService:LocalizationService) {}
   @Output() menu = new EventEmitter<void>(); //out put the menu flag(open or close)
-  @Output() selectedLanguage = new EventEmitter<string>(); //out put the language
   menuflag: boolean = false;//to show the manu or not
   language:string="EN";
   languages:string[]=this.localizationService.languages;
@@ -19,7 +18,7 @@ export class HeaderComponent implements OnInit {
     this.menu.emit(); //out put the menu flag(open or close)
   }
   changeLanguage(){
-    this.selectedLanguage.emit(this.language);
+    this.localizationService.selectedLanguage=this.language;
   }
 
   ngOnInit() {}

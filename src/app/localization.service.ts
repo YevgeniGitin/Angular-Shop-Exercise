@@ -1,27 +1,40 @@
 import { Injectable } from "@angular/core";
 import translationJson from "../assets/data/translation.json";
 
-interface Translation{
-  EN:string[];
-  HE:string[];
-}
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class LocalizationService {
-_languages:string[]=["HE","EN"];
-private translation:Translation=translationJson;
+_languages:string[]=["HE","EN","RUS"];
+private _selectedLanguage:string="EN";
+private defultLanguage:string[]=translationJson.EN;
+private translationLanguage:string[]=translationJson.EN;
 //provide languages list
   get languages():string[]{
     return this._languages;
   }
+  //provide selected language
+  get selectedLanguage():string{
+    return this._selectedLanguage;
+  }
+  set selectedLanguage(lan:string){
+    this._selectedLanguage=lan;
+    if(lan==="HE"){
+      this.translationLanguage=translationJson.HE;
+    }else if(lan==="RUS"){
+      this.translationLanguage=translationJson.RUS;
+    }else if(lan==="EN"){
+      this.translationLanguage=translationJson.EN;
+    }
+    
+  }
 //translate a word by getting the word and language
-  translate(word:string,languag:string):string{
-    if(languag==="HE"){
-      let index:number=this.translation.EN.findIndex(o=>o===word);
-      return this.translation.HE[index];
+  translate(word:string,language:string):string{
+    if(language!=="EN"){
+      let index:number=this.defultLanguage.findIndex(o=>o===word);
+      return this.translationLanguage[index];
     }else{
       return word;  
     }

@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from "@angular/core";
 import { CartService } from "../cart.service";
 import { UserService } from "../user.service";
 import { Router } from '@angular/router';
+import { LocalizationService } from '../localization.service';
 
 @Component({
   selector: "app-menu-bar",
@@ -10,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class MenuBarComponent implements OnInit {
   @Input() selectedLanguage:string;
-  constructor(private cartService:CartService,private userService:UserService, private router: Router) {}
+  constructor(private cartService:CartService,private userService:UserService, private router: Router,private localizationService:LocalizationService) {}
   count:number=this.cartService.getCount();
 
   openShoppingCart(){

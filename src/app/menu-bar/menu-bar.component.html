@@ -1,10 +1,10 @@
-<button routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">{{'HomePage'|translation:this.selectedLanguage}}</button>
-<button routerLink="/about" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">{{'About'|translation:this.selectedLanguage}}</button>
-<button routerLink="/category-list" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">{{'Category list'|translation:this.selectedLanguage}}</button>
-<button *ngIf="this.userService.logInFlag" routerLink="/logIn" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">{{'Login'|translation:this.selectedLanguage}}</button>
-<button *ngIf="!this.userService.logInFlag" (click)="logOut()" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">{{'LogOut'|translation:this.selectedLanguage}}</button>
-<button *ngIf="this.userService.isAdmin" routerLink="/add-new-products" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">{{'Add new products'|translation:this.selectedLanguage}}</button>
-<button routerLink="/contact" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">{{'Contact'|translation:this.selectedLanguage}}</button>
+<button routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">{{'HomePage'|translation:this.localizationService.selectedLanguage}}</button>
+<button routerLink="/about" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">{{'About'|translation:this.localizationService.selectedLanguage}}</button>
+<button routerLink="/category-list" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">{{'Category list'|translation:this.localizationService.selectedLanguage}}</button>
+<button *ngIf="this.userService.logInFlag" routerLink="/logIn" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">{{'Login'|translation:this.localizationService.selectedLanguage}}</button>
+<button *ngIf="!this.userService.logInFlag" (click)="logOut()" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">{{'LogOut'|translation:this.localizationService.selectedLanguage}}</button>
+<button *ngIf="this.userService.isAdmin" routerLink="/add-new-products" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">{{'Add new products'|translation:this.localizationService.selectedLanguage}}</button>
+<button routerLink="/contact" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">{{'Contact'|translation:this.localizationService.selectedLanguage}}</button>
 <button *ngIf="!this.userService.logInFlag" class="card" routerLink="/shopping-card/shoppingCard/false" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
   <div class="card-bucket_count">{{count}}</div>
   <img src="../../assets/img/bucket.png" alt="buy bucket link" />
