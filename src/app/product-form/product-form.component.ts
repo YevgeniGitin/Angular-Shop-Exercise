@@ -18,13 +18,7 @@ export class ProductFormComponent implements OnInit {
   contactForm: FormGroup;
   categorys: Category[] = this.dataService.loadCategorys(); //load categorys
 
-  constructor(
-    private dataService: DataService,
-    private userService: UserService,
-    private fb: FormBuilder,
-    private route: ActivatedRoute,
-    private location : Location
-  ) {
+  constructor( private dataService: DataService,private userService: UserService,private fb: FormBuilder,private route: ActivatedRoute, private location : Location) {
     this.contactForm = this.fb.group({
       Category: [this.categorys[0], Validators.required],
       Image: ["", Validators.required],
@@ -75,15 +69,18 @@ export class ProductFormComponent implements OnInit {
     }
   }
 
-  createId(): string {
+  createId():string {
     // Math.random should be unique because of its seeding algorithm.
     // Convert it to base 36 (numbers + letters), and grab the first 9 characters
-    return Math.random().toString(36).substr(2, 22);
+     let id:string=Math.random().toString(36).substr(2, 22);
+     while(this.dataService.getProductByid(id)!==undefined){
+      id=Math.random().toString(36).substr(2, 22);
+     }
+     return id;
   }
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get("id");
-    console.log(id);
     if (id !== null) {
       this.newProduct
       this.selectedProduct = this.dataService.getProductByid(id);
