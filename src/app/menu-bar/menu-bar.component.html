@@ -1,14 +1,3 @@
-<<<<<<< HEAD
-<button (click)="openHome()">{{'HomePage'|translation:this.localizationService.selectedLanguage}}</button>
-<button (click)="openAbout()">{{'About'|translation:this.localizationService.selectedLanguage}}</button>
-<button (click)="openProducts()">{{'Product list'|translation:this.localizationService.selectedLanguage}}</button>
-<button *ngIf="this.userService.logInFlag" (click)="logIn()">{{'Login'|translation:this.localizationService.selectedLanguage}}</button>
-<button *ngIf="!this.userService.logInFlag" (click)="logOut()">{{'LogOut'|translation:this.localizationService.selectedLanguage}}</button>
-<button *ngIf="this.userService.isAdmin" (click)="addProduct()">{{'Add new products'|translation:this.localizationService.selectedLanguage}}</button>
-<button (click)="contactForm()">{{'Contact'|translation:this.localizationService.selectedLanguage}}</button>
-<button *ngIf="!this.userService.logInFlag" class="card" (click)="openShoppingCart()">
-  <div class="card-bucket_count">{{count}}</div>
-=======
 <button routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">{{'HomePage'|translation:this.localizationService.selectedLanguage}}</button>
 <button routerLink="/about" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">{{'About'|translation:this.localizationService.selectedLanguage}}</button>
 <button routerLink="/category-list" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">{{'Category list'|translation:this.localizationService.selectedLanguage}}</button>
@@ -18,7 +7,6 @@
 <button routerLink="/contact" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">{{'Contact'|translation:this.localizationService.selectedLanguage}}</button>
 <button *ngIf="!this.userService.logInFlag" class="cart" routerLink="/cart" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
   <div class="cart-bucket_count">{{count}}</div>
->>>>>>> AngularShopRoutingExercise
   <img src="../../assets/img/bucket.png" alt="buy bucket link" />
 </button>
 <app-social-links></app-social-links>

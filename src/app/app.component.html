@@ -1,17 +1,10 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div class="all_site" (wheel)="closeMenu()">
-<<<<<<< HEAD
-    <app-menu-bar *ngIf=showMenu (choosePage)="switchPage($event)" class="menu" [@menuBar]="currentState"></app-menu-bar>
-    <div class="container" (mouseover)="closeMenu()">
-        <app-header class="header" (menu)="recivedMenuClick($event)"></app-header>
-        <app-main-area class="main-area-style" (open)="switchPage($event)" [pageToOpen]="pageToOpen"></app-main-area>
-=======
     <app-menu-bar *ngIf=showMenu class="menu" [@menuBar]="currentState"></app-menu-bar>
     <div class="container" (mouseover)="closeMenu()">
         <app-header class="header" (menu)="recivedMenuClick($event)"></app-header>
         <div class="main-area">
             <router-outlet></router-outlet>
         </div>
->>>>>>> AngularShopRoutingExercise
     </div>
 </div>
