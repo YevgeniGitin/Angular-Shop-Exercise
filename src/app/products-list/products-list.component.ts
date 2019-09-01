@@ -22,7 +22,7 @@ export class ProductsListComponent implements OnInit {
   //display the product
   clickOnProduct(product:Product) {
     if(this.action===true){//check if we in get in from product list or from the card
-      this.router.navigate(['products-list/product-details',product.ProductId]);
+      this.router.navigate(['product-details',product.ProductId]);
     }else{
       this.router.navigate(['cart/product-details',product.ProductId]);
     }

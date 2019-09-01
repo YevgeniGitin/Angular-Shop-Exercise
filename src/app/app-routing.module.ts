@@ -20,7 +20,7 @@ const routes: Routes = [
   {path: 'logIn', component: LogInFormComponent},
   {path: 'contact', component: ContactFormComponent},
   {path: 'products-list/:selectedCategory', component: ProductsListComponent},
-  {path: 'products-list/product-details/:id', component: ProductDisplayComponent,data:{action:true}},
+  {path: 'product-details/:id', component: ProductDisplayComponent,data:{action:true}},
   {path: 'add-new-products', component: ProductFormComponent,canDeactivate:[FormGuard]},
   {path: 'edit-product/:id' ,component: ProductFormComponent,canDeactivate:[FormGuard]},
   {path: 'cart',
