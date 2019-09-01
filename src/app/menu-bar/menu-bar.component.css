@@ -1,17 +1,18 @@
 button {
     margin-bottom: 1em;
+    padding: 0;
     background: none;
     border: none;
 }
 
-.card {
+.cart {
     width: 3em;
     height: 3em;
     background: none;
     position: relative;
 }
 
-.card:hover {
+.cart:hover {
     text-decoration: none;
     cursor: pointer;
 }
@@ -20,7 +21,7 @@ img {
     width: 100%;
 }
 
-.card-bucket_count {
+.cart-bucket_count {
     background: none;
     width: 100%;
     height: 1em;
@@ -33,6 +34,11 @@ button:hover {
 
 button:focus {
     outline: none;
+}
+
+.active,
+.active>img {
+    background-color: rgb(120, 120, 121);
 }
 
 app-social-links {

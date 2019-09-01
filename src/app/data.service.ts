@@ -1,7 +1,7 @@
-import { Injectable } from "@angular/core";
-import productsCategorys from "../assets/data/ProductCategory.json";
-import{Category} from "../modules/category";
-import {Product} from"../modules/product";
+import { Injectable } from '@angular/core';
+import productsCategorys from '../assets/data/ProductCategory.json';
+import{Category} from '../modules/category';
+import {Product} from'../modules/product';
 
 
 @Injectable({
@@ -11,6 +11,13 @@ export class DataService {
  private data:Category[]=productsCategorys;
 
   constructor() { }
+
+  getProductByid(id:string):Product{
+    let products:Product[]=this.loadAllProducts();
+    return products.find(item=> item.ProductId===id);
+
+  }
+  
 //load all categorys
   loadCategorys():Category[]{
     return this.data;

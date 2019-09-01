@@ -1,9 +1,9 @@
-import { Injectable } from "@angular/core";
-import { User } from "../modules/user";
+import { Injectable } from '@angular/core';
+import { User } from '../modules/user';
 import { Product } from 'src/modules/product';
 
 @Injectable({
-  providedIn: "root"
+  providedIn: 'root'
 })
 export class UserService {
   private _logInFlag:boolean=true;//flag some one is loged in true=not
@@ -13,17 +13,17 @@ export class UserService {
   //users array
   users:User[]=[
     {
-      fullName:"Jon Smith",
-      userName:"user",
-      password:"user",
-      permission:"user",
+      fullName:'Jon Smith',
+      userName:'user',
+      password:'user',
+      permission:'user',
       productsInCard:[]
     },
     {
-      fullName:"Tod Tatal",
-      userName:"admin",
-      password:"admin",
-      permission:"admin",
+      fullName:'Tod Tatal',
+      userName:'admin',
+      password:'admin',
+      permission:'admin',
       productsInCard:[]
     }
   ];
@@ -62,7 +62,7 @@ export class UserService {
     if(this.connectUser!==undefined){
      return this.connectUser.fullName;
     }else{
-      return "";
+      return '';
     }
   }
   //for the log in prosses if the user name is exists
