@@ -6,7 +6,7 @@
 
 .menu {
     background-color: rgb(205, 207, 207);
-    height: 33.1em;
+    height: 34.1em;
     width: 0;
     padding: 1em;
     display: flex;
@@ -25,7 +25,7 @@
 
 .main-area {
     width: 100%;
-    min-height: 24em;
+    min-height: 26em;
 }
 
 .header {

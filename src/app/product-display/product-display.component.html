@@ -1,4 +1,4 @@
-<button class="back" (click)="goBack()">back</button>
+<button *ngIf="action" class="back" (click)="goBack()">back</button>
 <div class="box" [@fadeInOut]>
     <div class="productbox">
         <h1>{{product.Title}}</h1>

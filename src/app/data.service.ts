@@ -1,7 +1,7 @@
-import { Injectable } from "@angular/core";
-import productsCategorys from "../assets/data/ProductCategory.json";
-import{Category} from "../modules/category";
-import {Product} from"../modules/product";
+import { Injectable } from '@angular/core';
+import productsCategorys from '../assets/data/ProductCategory.json';
+import{Category} from '../modules/category';
+import {Product} from'../modules/product';
 
 
 @Injectable({

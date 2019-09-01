@@ -5,8 +5,8 @@
 <button *ngIf="!this.userService.logInFlag" (click)="logOut()" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">{{'LogOut'|translation:this.localizationService.selectedLanguage}}</button>
 <button *ngIf="this.userService.isAdmin" routerLink="/add-new-products" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">{{'Add new products'|translation:this.localizationService.selectedLanguage}}</button>
 <button routerLink="/contact" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">{{'Contact'|translation:this.localizationService.selectedLanguage}}</button>
-<button *ngIf="!this.userService.logInFlag" class="card" routerLink="/shopping-card/shoppingCard/false" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
-  <div class="card-bucket_count">{{count}}</div>
+<button *ngIf="!this.userService.logInFlag" class="cart" routerLink="/cart" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+  <div class="cart-bucket_count">{{count}}</div>
   <img src="../../assets/img/bucket.png" alt="buy bucket link" />
 </button>
 <app-social-links></app-social-links>

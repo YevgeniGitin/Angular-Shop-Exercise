@@ -1,16 +1,16 @@
-import { Component, OnInit } from "@angular/core";
-import { DataService } from "../data.service";
-import { Category } from "../../modules/category";
-import {FormBuilder, FormGroup, Validators, AbstractControl} from "@angular/forms";
-import { Product } from "src/modules/product";
-import { UserService } from "../user.service";
-import { ActivatedRoute } from "@angular/router";
+import { Component, OnInit } from '@angular/core';
+import { DataService } from '../data.service';
+import { Category } from '../../modules/category';
+import {FormBuilder, FormGroup, Validators, AbstractControl} from '@angular/forms';
+import { Product } from 'src/modules/product';
+import { UserService } from '../user.service';
+import { ActivatedRoute } from '@angular/router';
 import{ Location } from '@angular/common';
 
 @Component({
-  selector: "app-product-form",
-  templateUrl: "./product-form.component.html",
-  styleUrls: ["./product-form.component.css"]
+  selector: 'app-product-form',
+  templateUrl: './product-form.component.html',
+  styleUrls: ['./product-form.component.css']
 })
 export class ProductFormComponent implements OnInit {
   selectedProduct: Product; //get product if we come from the edit function
@@ -21,23 +21,23 @@ export class ProductFormComponent implements OnInit {
   constructor( private dataService: DataService,private userService: UserService,private fb: FormBuilder,private route: ActivatedRoute, private location : Location) {
     this.contactForm = this.fb.group({
       Category: [this.categorys[0], Validators.required],
-      Image: ["", Validators.required],
-      Title: ["", Validators.required],
-      Price: ["", [Validators.required, Validators.min(0)]],
-      Description: [""]
+      Image: ['', Validators.required],
+      Title: ['', Validators.required],
+      Price: ['', [Validators.required, Validators.min(0)]],
+      Description: ['']
     });
   }
 
   get imageForm(): AbstractControl {
-    return this.contactForm.get("Image");
+    return this.contactForm.get('Image');
   }
 
   get titleForm(): AbstractControl {
-    return this.contactForm.get("Title");
+    return this.contactForm.get('Title');
   }
 
   get priceForm(): AbstractControl {
-    return this.contactForm.get("Price");
+    return this.contactForm.get('Price');
   }
 
   onSubmit() {
@@ -53,7 +53,7 @@ export class ProductFormComponent implements OnInit {
     if (this.newProduct) {
       //add new prodact
       this.dataService.addProduct(product);
-      alert("The product added!");
+      alert('The product added!');
       this.contactForm.reset(); //reset the form for new details of new  product
       this.contactForm.patchValue({ Category: this.categorys[0] });
     } else {
@@ -80,7 +80,7 @@ export class ProductFormComponent implements OnInit {
   }
 
   ngOnInit() {
-    const id = this.route.snapshot.paramMap.get("id");
+    const id = this.route.snapshot.paramMap.get('id');
     if (id !== null) {
       this.newProduct
       this.selectedProduct = this.dataService.getProductByid(id);

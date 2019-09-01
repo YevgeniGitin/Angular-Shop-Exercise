@@ -1,3 +1,4 @@
+<router-outlet></router-outlet>
 <div class="cards_box" [@fadeInOut]>
     <div class="card-div" *ngFor="let product of productsArray">
         <app-product-card [product]="product" (click)="clickOnProduct(product)"></app-product-card>
