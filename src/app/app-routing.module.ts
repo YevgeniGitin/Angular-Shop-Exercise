@@ -10,6 +10,7 @@ import { ProductFormComponent } from './product-form/product-form.component';
 import { ProductDisplayComponent } from './product-display/product-display.component';
 import { LogInGuard } from './log-in.guard';
 import { FormGuard } from './form.guard';
+import { IsAdminGuard } from './is-admin.guard';
 
 
 
@@ -21,8 +22,8 @@ const routes: Routes = [
   {path: 'contact', component: ContactFormComponent},
   {path: 'products-list/:selectedCategory', component: ProductsListComponent},
   {path: 'product-details/:id', component: ProductDisplayComponent,data:{action:true}},
-  {path: 'add-new-products', component: ProductFormComponent,canDeactivate:[FormGuard]},
-  {path: 'edit-product/:id' ,component: ProductFormComponent,canDeactivate:[FormGuard]},
+  {path: 'add-new-products', component: ProductFormComponent,canActivate:[IsAdminGuard],canDeactivate:[FormGuard]},
+  {path: 'edit-product/:id' ,component: ProductFormComponent,canActivate:[IsAdminGuard],canDeactivate:[FormGuard]},
   {path: 'cart',
   component: ProductsListComponent,
   canActivate:[LogInGuard],

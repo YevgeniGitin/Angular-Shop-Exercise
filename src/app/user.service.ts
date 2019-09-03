@@ -8,7 +8,7 @@ import { Product } from 'src/modules/product';
 export class UserService {
   private _logInFlag:boolean=true;//flag some one is loged in true=not
   private _connectUser:User;//save user that is loged in
-  private _userIndex:number;//index of user in the array for the card service
+  private _userIndex:number=0;//index of user in the array for the card service
   private _isAdmin:boolean=false;//admin flag defult not
   //users array
   users:User[]=[
