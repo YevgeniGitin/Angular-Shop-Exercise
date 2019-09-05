@@ -19,11 +19,7 @@ export class MenuBarComponent implements OnInit {
   count: number = this.cartService.getCount();
   //when loged out clear the local storage
   logOut() {
-    this.userService.logIn = true;
-    this.userService.isAdmin = false;
-    this.userService.connectUser=undefined;
-    this.userService.userIndex=0;
-    localStorage.removeItem('id');
+    this.userService.logout();
     this.router.navigate(['/logIn']);
   }
   ngOnInit() {}
