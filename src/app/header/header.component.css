@@ -1,6 +1,6 @@
 img {
-    width: 30%;
-    height: 80%;
+    max-width: 30%;
+    max-height: 80%;
 }
 
 .logobox {

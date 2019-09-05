@@ -11,8 +11,8 @@ export class IsAdminGuard implements  CanActivate {
     if(this.userService.isAdmin){
       return true;
     }else{
-      this.router.navigate(["logIn"]);
-      this.userService.logInFlag=true;
+      this.router.navigate(['logIn']);
+      this.userService.logIn=true;
       this.userService.isAdmin=false;
       localStorage.removeItem('user');
       localStorage.removeItem('logInFlag');

@@ -2,7 +2,7 @@
 <div class="box" [@fadeInOut]>
     <div class="productbox">
         <div class="closeContainer">
-            <button class="close" *ngIf="!action && !this.userService.logInFlag" (click)="close()">X</button>
+            <button class="close" *ngIf="!action && !this.userService.logIn" (click)="close()">X</button>
         </div>
         <h1>{{product.Title}}</h1>
         <img [src]="product.Image" [alt]="product.Title">
@@ -12,7 +12,7 @@
         <p>{{product.Description}}</p>
     </div>
     <div class="card_buttons">
-        <button *ngIf="action && !this.userService.logInFlag" (click)="addItem(product)">Add to card</button>
-        <button *ngIf="!action && !this.userService.logInFlag" (click)="removeItem(product)">Remove from card</button>
+        <button *ngIf="action && !this.userService.logIn" (click)="addItem(product)">Add to card</button>
+        <button *ngIf="!action && !this.userService.logIn" (click)="removeItem(product)">Remove from card</button>
     </div>
 </div>

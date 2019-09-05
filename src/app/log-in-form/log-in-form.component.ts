@@ -21,7 +21,7 @@ export class LogInFormComponent implements OnInit {
     }else if(user.password!==this.password){ //check the password
       alert('Password is incorrect');
     }else{//corect data change status of log in and save the loged in user
-      this.userService.logInFlag=false;
+      this.userService.logIn=false;
       this.userService.connectUser=user;
       localStorage.setItem('id',user.id);
       if(this.userService.connectUser.permission==='admin'){//check if the user is admin if yes give permission 

@@ -8,8 +8,8 @@ import { UserService } from './user.service';
 export class LogInGuard implements CanActivate {
   constructor(private userService:UserService,private router:Router){}
   canActivate(){
-    if(this.userService.logInFlag){
-      this.router.navigate(["logIn"]);
+    if(this.userService.logIn){
+      this.router.navigate(['logIn']);
     }else{
       return true; 
     }

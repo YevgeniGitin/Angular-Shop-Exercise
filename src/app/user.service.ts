@@ -26,13 +26,13 @@ export class UserService {
     }
   ];
 
-  private _logInFlag:boolean;//flag some one is loged in true=not
+  private _logIn:boolean;//flag some one is loged in true=not
   private _connectUser:User;//save user that is loged in from the local storage if it there
   private _userIndex:number;//index of user in the array for the card service
   private _isAdmin:boolean;//admin flag defult not
  //try to load data from local storage
   constructor() { 
-    this._logInFlag=localStorage.getItem('id')? false:true;
+    this._logIn=localStorage.getItem('id')? false:true;
     this._connectUser=localStorage.getItem('id')?this.getUserById(localStorage.getItem('id')):undefined;
     this._userIndex=localStorage.getItem('id')? this.getUserIndexById(localStorage.getItem('id')):0;
     this._isAdmin=localStorage.getItem('id')? (this.getUserById(localStorage.getItem('id')).permission==='admin'):false;
@@ -59,12 +59,12 @@ export class UserService {
     return this._userIndex;
   }
 
-  get logInFlag():boolean{
-    return this._logInFlag;
+  get logIn():boolean{
+    return this._logIn;
   } 
 
-  set logInFlag(flag:boolean){
-    this._logInFlag=flag;
+  set logIn(flag:boolean){
+    this._logIn=flag;
   }
 
   get connectUser():User{
