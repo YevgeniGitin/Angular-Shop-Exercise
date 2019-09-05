@@ -1,0 +1,8 @@
+<div class="categoryList" [@fadeInOut]>
+    <ul *ngFor="let category of data">
+        <li (click)="getCategoriesProducts(category)"> {{ category.title }}</li>
+    </ul>
+    <ul>
+        <li (click)="getAllProducts()"> All Categories</li>
+    </ul>
+</div>

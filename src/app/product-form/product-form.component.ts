@@ -16,11 +16,11 @@ export class ProductFormComponent implements OnInit {
   selectedProduct: Product; //get product if we come from the edit function
   newProduct: boolean = true; //flag if we add new item or edit item
   contactForm: FormGroup;
-  categorys: Category[] = this.dataService.loadCategorys(); //load categorys
+  Categories: Category[] = this.dataService.loadCategories(); //load Categories
 
   constructor( private dataService: DataService,private userService: UserService,private fb: FormBuilder,private route: ActivatedRoute, private location : Location) {
     this.contactForm = this.fb.group({
-      Category: [this.categorys[0], Validators.required],
+      Category: [this.Categories[0], Validators.required],
       Image: ['', Validators.required],
       Title: ['', Validators.required],
       Price: ['', [Validators.required, Validators.min(0)]],
@@ -55,7 +55,7 @@ export class ProductFormComponent implements OnInit {
       this.dataService.addProduct(product);
       alert('The product added!');
       this.contactForm.reset(); //reset the form for new details of new  product
-      this.contactForm.patchValue({ Category: this.categorys[0] });
+      this.contactForm.patchValue({ Category: this.Categories[0] });
     } else {
       //edit product
       product.ProductId=this.selectedProduct.ProductId;
@@ -84,12 +84,12 @@ export class ProductFormComponent implements OnInit {
     if (id !== null) {
       this.newProduct
       this.selectedProduct = this.dataService.getProductByid(id);
-      let indexCategory: number = this.categorys.findIndex(
+      let indexCategory: number = this.Categories.findIndex(
         o => o.id === this.selectedProduct.CategoryId
       ); //in for category name to display
       this.newProduct = false; //the submit function know that it is edit and not add new product
       this.contactForm.patchValue({
-        Category: this.categorys[indexCategory],
+        Category: this.Categories[indexCategory],
         Image: this.selectedProduct.Image,
         Title: this.selectedProduct.Title,
         Price: this.selectedProduct.Price,

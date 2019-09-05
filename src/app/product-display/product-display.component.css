@@ -1,6 +1,28 @@
 .productbox {
     width: 24%;
     margin: 1em 0 1em 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.close {
+    background: none;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    min-width: 1em;
+    min-height: 1em;
+}
+
+.close:hover {
+    background-color: red;
+}
+
+.closeContainer {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
 }
 
 h1,

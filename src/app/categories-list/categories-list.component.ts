@@ -5,9 +5,9 @@ import { DataService } from '../data.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-categorys-list',
-  templateUrl: './categorys-list.component.html',
-  styleUrls: ['./categorys-list.component.css'],
+  selector: 'app-Categories-list',
+  templateUrl: './Categories-list.component.html',
+  styleUrls: ['./Categories-list.component.css'],
   animations: [
     trigger('fadeInOut', [
       state('void', style({ opacity: 0 })),
@@ -15,11 +15,11 @@ import { Router } from '@angular/router';
     ])
   ]
 })
-export class CategorysListComponent implements OnInit {
+export class CategoriesListComponent implements OnInit {
   data: Category[];
   constructor(private dataService: DataService,private router: Router) {}
   //get category's products
-  getCategorysProducts(category: Category) {
+  getCategoriesProducts(category: Category) {
     this.router.navigate(['products-list',category.id]);
   }
   //get all products
@@ -28,6 +28,6 @@ export class CategorysListComponent implements OnInit {
   }
   //init firs data to present
   ngOnInit() {
-    this.data = this.dataService.loadCategorys();
+    this.data = this.dataService.loadCategories();
   }
 }

@@ -37,6 +37,9 @@ export class ProductDisplayComponent implements OnInit{
   goBack() {
     this.location.back();
   }
+  close(){
+    this.router.navigate(['/cart']);
+  }
   //get the id of the product and listeniing for any change
   ngOnInit() {
     this.route.paramMap.subscribe(id=>this.loadeProduct(id.get('id')));

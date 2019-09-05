@@ -8,7 +8,7 @@ import { HeaderComponent } from './header/header.component';
 import { MenuBarComponent } from './menu-bar/menu-bar.component';
 import { ProductDisplayComponent } from './product-display/product-display.component';
 import { SocialLinksComponent } from './social-links/social-links.component';
-import { CategorysListComponent } from './categorys-list/categorys-list.component';
+import { CategoriesListComponent } from './categories-list/categories-list.component';
 import { ProductsListComponent } from './products-list/products-list.component';
 import { ProductCardComponent } from './product-card/product-card.component';
 import { HomeComponent } from './home/home.component';
@@ -27,7 +27,7 @@ import { ConfirmationDirective } from './confirmation.directive';
     MenuBarComponent,
     ProductDisplayComponent,
     SocialLinksComponent,
-    CategorysListComponent,
+    CategoriesListComponent,
     ProductsListComponent,
     ProductCardComponent,
     HomeComponent,

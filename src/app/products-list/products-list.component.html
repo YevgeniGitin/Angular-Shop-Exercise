@@ -1,7 +1,11 @@
-<router-outlet></router-outlet>
-<div class="cards_box" [@fadeInOut]>
-    <div class="card-div" *ngFor="let product of productsArray">
-        <app-product-card [product]="product" (click)="clickOnProduct(product)"></app-product-card>
-        <button *ngIf="this.userService.isAdmin && action" (click)="editProduct(product)">edit</button>
+<div class="container">
+    <div *ngIf="!this.action" class="router">
+        <router-outlet></router-outlet>
+    </div>
+    <div class="cards_box" [@fadeInOut]>
+        <div class="card-div" *ngFor="let product of productsArray">
+            <app-product-card [product]="product" (click)="clickOnProduct(product)"></app-product-card>
+            <button *ngIf="this.userService.isAdmin && action" (click)="editProduct(product)">edit</button>
+        </div>
     </div>
 </div>

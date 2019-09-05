@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import productsCategorys from '../assets/data/ProductCategory.json';
+import productsCategories from '../assets/data/ProductCategory.json';
 import{Category} from '../modules/category';
 import {Product} from'../modules/product';
 
@@ -8,7 +8,7 @@ import {Product} from'../modules/product';
   providedIn: 'root'
 })
 export class DataService {
- private data:Category[]=productsCategorys;
+ private data:Category[]=productsCategories;
 
   constructor() { }
 
@@ -18,8 +18,8 @@ export class DataService {
 
   }
   
-//load all categorys
-  loadCategorys():Category[]{
+//load all Categories
+  loadCategories():Category[]{
     return this.data;
   }
   //add product to the data

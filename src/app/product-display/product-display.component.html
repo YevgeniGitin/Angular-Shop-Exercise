@@ -1,6 +1,9 @@
 <button *ngIf="action" class="back" (click)="goBack()">back</button>
 <div class="box" [@fadeInOut]>
     <div class="productbox">
+        <div class="closeContainer">
+            <button class="close" *ngIf="!action && !this.userService.logInFlag" (click)="close()">X</button>
+        </div>
         <h1>{{product.Title}}</h1>
         <img [src]="product.Image" [alt]="product.Title">
         <h3>Prise: {{product.Price}} ILS</h3>

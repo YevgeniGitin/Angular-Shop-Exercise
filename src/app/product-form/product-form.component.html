@@ -2,7 +2,7 @@
     <h1>Add New Product</h1>
     <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
         <select formControlName="Category">
-      <option *ngFor="let category of categorys" [ngValue]="category">{{category.title}}</option>
+      <option *ngFor="let category of Categories" [ngValue]="category">{{category.title}}</option>
     </select>
         <input type="text" formControlName="Image" placeholder="Image URL" />
         <span *ngIf="imageForm.invalid && !imageForm.pristine">Image url is required.</span>
