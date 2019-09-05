@@ -12,11 +12,11 @@ import { LocalizationService } from '../localization.service';
 export class MenuBarComponent implements OnInit {
   constructor(private cartService:CartService,private userService:UserService, private router: Router,private localizationService:LocalizationService) {}
   count:number=this.cartService.getCount();
-
+//when loged out clear the local storage
   logOut(){
     this.userService.logInFlag=true;
     this.userService.isAdmin=false;
-    this.router.navigate(['home']);
+    localStorage.removeItem('id');
   }
   ngOnInit() {
   }

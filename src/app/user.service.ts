@@ -6,13 +6,10 @@ import { Product } from 'src/modules/product';
   providedIn: 'root'
 })
 export class UserService {
-  private _logInFlag:boolean=true;//flag some one is loged in true=not
-  private _connectUser:User;//save user that is loged in
-  private _userIndex:number=0;//index of user in the array for the card service
-  private _isAdmin:boolean=false;//admin flag defult not
-  //users array
-  users:User[]=[
+   //users array
+   users:User[]=[
     {
+      id: '654237651',
       fullName:'Jon Smith',
       userName:'user',
       password:'user',
@@ -20,6 +17,7 @@ export class UserService {
       productsInCard:[]
     },
     {
+      id: '846382058',
       fullName:'Tod Tatal',
       userName:'admin',
       password:'admin',
@@ -27,7 +25,28 @@ export class UserService {
       productsInCard:[]
     }
   ];
-  constructor() { }
+
+  private _logInFlag:boolean;//flag some one is loged in true=not
+  private _connectUser:User;//save user that is loged in from the local storage if it there
+  private _userIndex:number;//index of user in the array for the card service
+  private _isAdmin:boolean;//admin flag defult not
+ //try to load data from local storage
+  constructor() { 
+    this._logInFlag=localStorage.getItem('id')? false:true;
+    this._connectUser=localStorage.getItem('id')?this.getUserById(localStorage.getItem('id')):undefined;
+    this._userIndex=localStorage.getItem('id')? this.getUserIndexById(localStorage.getItem('id')):0;
+    this._isAdmin=localStorage.getItem('id')? (this.getUserById(localStorage.getItem('id')).permission==='admin'):false;
+  }
+
+  getUserById(id:string):User{
+    let user:User=this.users.find(o=>o.id===id);
+      return user;
+  }
+
+  getUserIndexById(id:string):number{
+    let index:number=this.users.findIndex(o=>o.id===id);
+    return index;
+  }
 
   get isAdmin():boolean{
     return this._isAdmin;

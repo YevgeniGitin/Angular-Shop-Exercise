@@ -2,10 +2,12 @@
     <h1>Contact Form</h1>
     <form (ngSubmit)="send(); contactForm.reset();" #contactForm="ngForm">
         <input type="email" placeholder="Email" [(ngModel)]="email" #emailInput="ngModel" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required />
-        <span [hidden]="!emailInput.errors?.required">Email is required</span>
+        <span [hidden]="emailInput.pristine">
+            <span [hidden]="!emailInput.errors?.required">Email is required</span>
         <span [hidden]="!emailInput.errors?.pattern">This is not a valid Email!!!</span>
+        </span>
         <input type="text" placeholder="Subject" [(ngModel)]="subject" #subjectInput="ngModel" name="subject" required />
-        <span [hidden]="!subjectInput.errors?.required">Subject is required</span>
+        <span [hidden]="!subjectInput.errors?.required||subjectInput.pristine">Subject is required</span>
         <textarea name="message" id="" cols="50" rows="20" placeholder="Message" [(ngModel)]="message">{{ emailInput.invalid }}</textarea>
         <button [disabled]="contactForm.form.invalid || emailInput.invalid" type="submit" appConfirmation="Are you sure?" (confirmation)="confirmation($event)">Send</button>
     </form>

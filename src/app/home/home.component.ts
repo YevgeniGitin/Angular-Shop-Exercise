@@ -15,6 +15,7 @@ export class HomeComponent implements OnInit{
   name:string=this.userService.loadName();
   constructor(private userService:UserService) {}
 
-  ngOnInit() { }
+  ngOnInit() {
+   }
 
 }

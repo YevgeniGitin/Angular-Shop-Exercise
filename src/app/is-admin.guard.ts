@@ -14,6 +14,10 @@ export class IsAdminGuard implements  CanActivate {
       this.router.navigate(["logIn"]);
       this.userService.logInFlag=true;
       this.userService.isAdmin=false;
+      localStorage.removeItem('user');
+      localStorage.removeItem('logInFlag');
+      localStorage.removeItem('userIndex');
+      localStorage.removeItem('isAdmin');
     }
   }
   
