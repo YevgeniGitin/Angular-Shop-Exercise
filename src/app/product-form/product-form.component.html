@@ -1,8 +1,8 @@
-<div class="form-product_add">
+<div class="form-product_add" [@fadeInOut]>
     <h1>Add New Product</h1>
     <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
         <select formControlName="Category">
-      <option *ngFor="let category of Categories" [ngValue]="category">{{category.title}}</option>
+      <option *ngFor="let category of categories" [ngValue]="category">{{category.title}}</option>
     </select>
         <input type="text" formControlName="Image" placeholder="Image URL" />
         <span *ngIf="imageForm.invalid && !imageForm.pristine">Image url is required.</span>

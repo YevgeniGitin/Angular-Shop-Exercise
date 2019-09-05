@@ -17,14 +17,14 @@ import { Router } from '@angular/router';
 })
 export class CategoriesListComponent implements OnInit {
   data: Category[];
-  constructor(private dataService: DataService,private router: Router) {}
+  constructor(private dataService: DataService, private router: Router) {}
   //get category's products
   getCategoriesProducts(category: Category) {
-    this.router.navigate(['products-list',category.id]);
+    this.router.navigate(['products-list', category.id]);
   }
   //get all products
   getAllProducts() {
-    this.router.navigate(['products-list','allProducts']);
+    this.router.navigate(['products-list', 'allProducts']);
   }
   //init firs data to present
   ngOnInit() {

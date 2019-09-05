@@ -59,6 +59,10 @@ export class UserService {
     return this._userIndex;
   }
 
+  set userIndex(index:number){
+    this._userIndex=index;
+  }
+
   get logIn():boolean{
     return this._logIn;
   } 

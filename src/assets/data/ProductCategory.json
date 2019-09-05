@@ -1,50 +1,50 @@
 [{
         "id": "d2799801-acab-11e9-9692-8f8fe6f83dba",
         "title": "Watches",
-        "productarr": [{
-                "ProductId": "poiuy098765fdsa654nb",
-                "CategoryId": "d2799801-acab-11e9-9692-8f8fe6f83dba",
-                "Image": "assets/img/1.png",
-                "Title": "first item",
-                "Price": 5,
-                "Description": "Description"
+        "productArr": [{
+                "productId": "poiuy098765fdsa654nb",
+                "categoryId": "d2799801-acab-11e9-9692-8f8fe6f83dba",
+                "image": "assets/img/1.png",
+                "title": "first item",
+                "price": 5,
+                "description": "Description"
             },
             {
-                "ProductId": "234132fdsetvfdertbhf",
-                "CategoryId": "d2799801-acab-11e9-9692-8f8fe6f83dba",
-                "Image": "assets/img/2.png",
-                "Title": "second item",
-                "Price": 20,
-                "Description": "Description"
+                "productId": "234132fdsetvfdertbhf",
+                "categoryId": "d2799801-acab-11e9-9692-8f8fe6f83dba",
+                "image": "assets/img/2.png",
+                "title": "second item",
+                "price": 20,
+                "description": "Description"
             },
             {
-                "ProductId": "pqowieuro9634srt63by",
-                "CategoryId": "d2799801-acab-11e9-9692-8f8fe6f83dba",
-                "Image": "assets/img/3.png",
-                "Title": "hi item",
-                "Price": 400,
-                "Description": "Description"
+                "productId": "pqowieuro9634srt63by",
+                "categoryId": "d2799801-acab-11e9-9692-8f8fe6f83dba",
+                "image": "assets/img/3.png",
+                "title": "hi item",
+                "price": 400,
+                "description": "Description"
             }
         ]
     },
     {
         "id": "d6ebbf31-acab-11e9-9692-8f8fe6f83dba",
         "title": "Smartphones",
-        "productarr": [{
-                "ProductId": "mnbvcxz567hgf567uytr",
-                "CategoryId": "d6ebbf31-acab-11e9-9692-8f8fe6f83dba",
-                "Image": "assets/img/4.png",
-                "Title": "first item",
-                "Price": 58,
-                "Description": "Description"
+        "productArr": [{
+                "productId": "mnbvcxz567hgf567uytr",
+                "categoryId": "d6ebbf31-acab-11e9-9692-8f8fe6f83dba",
+                "image": "assets/img/4.png",
+                "title": "first item",
+                "price": 58,
+                "description": "Description"
             },
             {
-                "ProductId": "65748gtusbvt32rst5hs",
-                "CategoryId": "d6ebbf31-acab-11e9-9692-8f8fe6f83dba",
-                "Image": "assets/img/5.png",
-                "Title": "second",
-                "Price": 56,
-                "Description": "Description"
+                "productId": "65748gtusbvt32rst5hs",
+                "categoryId": "d6ebbf31-acab-11e9-9692-8f8fe6f83dba",
+                "image": "assets/img/5.png",
+                "title": "second",
+                "price": 56,
+                "description": "Description"
             }
         ]
     }

@@ -1,4 +1,4 @@
-<div class="logIn">
+<div class="logIn" [@fadeInOut]>
     <h1>LogIn</h1>
     <form (ngSubmit)="onSubmit()" #logInForm="ngForm">
         <input name="userName" type="text" placeholder="User Name" [(ngModel)]="userName" #usernameInput="ngModel" required minlength="3">

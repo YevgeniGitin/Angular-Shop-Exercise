@@ -1,16 +1,23 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
 import { Category } from '../../modules/category';
-import {FormBuilder, FormGroup, Validators, AbstractControl} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, AbstractControl} from '@angular/forms';
 import { Product } from 'src/modules/product';
 import { UserService } from '../user.service';
 import { ActivatedRoute } from '@angular/router';
-import{ Location } from '@angular/common';
+import { Location } from '@angular/common';
+import { trigger, state, style, transition, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-product-form',
   templateUrl: './product-form.component.html',
-  styleUrls: ['./product-form.component.css']
+  styleUrls: ['./product-form.component.css'],
+  animations: [
+    trigger('fadeInOut', [
+      state('void', style({ opacity: 0 })),
+      transition('void <=> *', animate('1.5s'))
+    ])
+  ]
 })
 export class ProductFormComponent implements OnInit {
   selectedProduct: Product; //get product if we come from the edit function
@@ -18,7 +25,13 @@ export class ProductFormComponent implements OnInit {
   contactForm: FormGroup;
   categories: Category[] = this.dataService.loadCategories(); //load Categories
 
-  constructor( private dataService: DataService,private userService: UserService,private fb: FormBuilder,private route: ActivatedRoute, private location : Location) {
+  constructor(
+    private dataService: DataService,
+    private userService: UserService,
+    private fb: FormBuilder,
+    private route: ActivatedRoute,
+    private location: Location
+  ) {
     this.contactForm = this.fb.group({
       Category: [this.categories[0], Validators.required],
       Image: ['', Validators.required],
@@ -43,12 +56,12 @@ export class ProductFormComponent implements OnInit {
   onSubmit() {
     const formModel = this.contactForm.value;
     let product: Product = {
-      ProductId: this.createId(),
-      CategoryId: formModel.Category.id,
-      Description: formModel.Description,
-      Image: formModel.Image,
-      Price: formModel.Price,
-      Title: formModel.Title
+      productId: this.createId(),
+      categoryId: formModel.Category.id,
+      description: formModel.Description,
+      image: formModel.Image,
+      price: formModel.Price,
+      title: formModel.Title
     };
     if (this.newProduct) {
       //add new prodact
@@ -58,42 +71,49 @@ export class ProductFormComponent implements OnInit {
       this.contactForm.patchValue({ Category: this.categories[0] });
     } else {
       //edit product
-      product.ProductId=this.selectedProduct.ProductId;
+      product.productId = this.selectedProduct.productId;
       if (this.selectedProduct !== product) {
         //if was chenge
         this.dataService.deleteProduct(this.selectedProduct); //delete old product
         this.dataService.addProduct(product); //add new product
-        this.userService.updateProductsInCardAfterEdit(this.selectedProduct, product); //update users cards
+        this.userService.updateProductsInCardAfterEdit(
+          this.selectedProduct,
+          product
+        ); //update users cards
         this.location.back();
       }
     }
   }
 
-  createId():string {
+  createId(): string {
     // Math.random should be unique because of its seeding algorithm.
     // Convert it to base 36 (numbers + letters), and grab the first 9 characters
-     let id:string=Math.random().toString(36).substr(2, 22);
-     while(this.dataService.getProductByid(id)!==undefined){
-      id=Math.random().toString(36).substr(2, 22);
-     }
-     return id;
+    let id: string = Math.random()
+      .toString(36)
+      .substr(2, 22);
+    while (this.dataService.getProductByid(id) !== undefined) {
+      id = Math.random()
+        .toString(36)
+        .substr(2, 22);
+    }
+    return id;
   }
 
   ngOnInit() {
     const id = this.route.snapshot.paramMap.get('id');
     if (id !== null) {
-      this.newProduct
+      this.newProduct;
       this.selectedProduct = this.dataService.getProductByid(id);
       let indexCategory: number = this.categories.findIndex(
-        o => o.id === this.selectedProduct.CategoryId
+        o => o.id === this.selectedProduct.categoryId
       ); //in for category name to display
       this.newProduct = false; //the submit function know that it is edit and not add new product
       this.contactForm.patchValue({
         Category: this.categories[indexCategory],
-        Image: this.selectedProduct.Image,
-        Title: this.selectedProduct.Title,
-        Price: this.selectedProduct.Price,
-        Description: this.selectedProduct.Description
+        Image: this.selectedProduct.image,
+        Title: this.selectedProduct.title,
+        Price: this.selectedProduct.price,
+        Description: this.selectedProduct.description
       });
     }
   }

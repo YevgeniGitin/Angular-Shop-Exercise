@@ -7,30 +7,36 @@ import { UserService } from './user.service';
 })
 export class CartService {
   //add product to the card
-  addProduct(product:Product){
-    this.userService.users[this.userService.userIndex].productsInCard.push(product);
+  addProduct(product: Product) {
+    this.userService.users[this.userService.userIndex].productsInCard.push(
+      product
+    );
   }
   //remove item by index
-  removeFromCard(product:Product){
-    let index=this.userService.users[this.userService.userIndex].productsInCard.indexOf(product)
+  removeFromCard(product: Product) {
+    let index = this.userService.users[
+      this.userService.userIndex
+    ].productsInCard.indexOf(product);
     //if there is no such iten do nothing
-    if(index!==-1){
-      this.userService.users[this.userService.userIndex].productsInCard.splice(index, 1);
+    if (index !== -1) {
+      this.userService.users[this.userService.userIndex].productsInCard.splice(
+        index,
+        1
+      );
     }
   }
   //get the items in the card arra
-  loadcard():Product[]{
+  loadcard(): Product[] {
     return this.userService.users[this.userService.userIndex].productsInCard;
   }
   //get the number of items in thecard for the menu
-  getCount():number{
-    if(this.userService.userIndex===undefined){
+  getCount(): number {
+    if (this.userService.userIndex === undefined) {
       return 0;
-    }else{
+    } else {
       return this.userService.users[this.userService.userIndex].productsInCard.length;
     }
-    
   }
 
-  constructor(private userService:UserService) { }
+  constructor(private userService: UserService) {}
 }
