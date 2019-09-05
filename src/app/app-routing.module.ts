@@ -11,14 +11,15 @@ import { ProductDisplayComponent } from './product-display/product-display.compo
 import { LogInGuard } from './log-in.guard';
 import { FormGuard } from './form.guard';
 import { IsAdminGuard } from './is-admin.guard';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent},
   {path: 'about', component: AboutComponent},
   {path: 'category-list', component: CategoriesListComponent},
-  { path: 'logIn', component: LogInFormComponent },
-  { path: 'contact', component: ContactFormComponent },
-  { path: 'products-list/:selectedCategory', component: ProductsListComponent },
+  {path: 'logIn', component: LogInFormComponent },
+  {path: 'contact', component: ContactFormComponent },
+  {path: 'products-list/:selectedCategory', component: ProductsListComponent },
   {path: 'product-details/:id', component: ProductDisplayComponent, data: { action: true }},
   {path: 'add-new-products', component: ProductFormComponent, canActivate: [IsAdminGuard], canDeactivate: [FormGuard]},
   {path: 'edit-product/:id', component: ProductFormComponent, canActivate: [IsAdminGuard], canDeactivate: [FormGuard]},
@@ -28,7 +29,8 @@ const routes: Routes = [
       {path: 'product-details/:id', component: ProductDisplayComponent, data: { action: false }}
     ]
   },
-  { path: '', redirectTo: '/home', pathMatch: 'full' }
+  {path: '', redirectTo: '/home', pathMatch: 'full' },
+  {path:'**', component: NotFoundComponent }
 ];
 
 @NgModule({
