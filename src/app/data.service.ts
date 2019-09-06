@@ -2,14 +2,31 @@ import { Injectable } from '@angular/core';
 import productsCategories from '../assets/data/ProductCategory.json';
 import { Category } from '../modules/category';
 import { Product } from '../modules/product';
+import { HttpClient } from '@angular/common/http';
+import { map,tap } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
   private data: Category[] = productsCategories;
+  private lala;
 
-  constructor() {}
+  constructor(private http: HttpClient) {
+    this.http.get('../assets/data/ProductCategory.json')
+      .pipe(map(json => json as Category[]),
+            tap(data=>console.log(data)))
+      .toPromise()
+      .catch(this.handleError);
+      console.log(this.data);
+  }
+
+  private handleError(error: Response) {
+    console.error(error);
+    const msg = `Error status code ${error.status} at ${error.url}`;
+    return Observable.throw(msg);
+  }
 
   getProductByid(id: string): Product {
     let products: Product[] = this.loadAllProducts();

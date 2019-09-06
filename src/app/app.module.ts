@@ -20,6 +20,7 @@ import { ContactFormComponent } from './contact-form/contact-form.component';
 import { TranslationPipe } from './translation.pipe';
 import { ConfirmationDirective } from './confirmation.directive';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
     ConfirmationDirective,
     NotFoundComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule,FormsModule,ReactiveFormsModule],
+  imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule,FormsModule,ReactiveFormsModule,HttpClientModule],
   providers: [],
   bootstrap: [AppComponent]
 })
