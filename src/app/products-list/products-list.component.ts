@@ -10,21 +10,9 @@ import { ActivatedRoute, Router } from '@angular/router';
   selector: 'app-products-list',
   templateUrl: './products-list.component.html',
   styleUrls: ['./products-list.component.css'],
-  animations: [
-    trigger('fadeInOut', [
-      state('void', style({ opacity: 0 })),
-      transition('void => *', animate('1s'))
-    ])
-  ]
 })
 export class ProductsListComponent implements OnInit {
-  constructor(
-    private dataService: DataService,
-    private cartService: CartService,
-    private userService: UserService,
-    private route: ActivatedRoute,
-    private router: Router
-  ) {}
+  constructor( private dataService: DataService, private cartService: CartService, private userService: UserService, private route: ActivatedRoute, private router: Router) { }
   action: boolean; //what action to allow add or remove
   productsArray: Product[]; //products array
   //display the product
@@ -42,9 +30,7 @@ export class ProductsListComponent implements OnInit {
   }
   //get selected list of products
   ngOnInit() {
-    const selectedCategory: string = this.route.snapshot.paramMap.get(
-      'selectedCategory'
-    );
+    const selectedCategory: string = this.route.snapshot.paramMap.get('selectedCategory');
     if (selectedCategory === 'allProducts') {
       this.action = true;
       this.productsArray = this.dataService.loadAllProducts();
@@ -54,9 +40,7 @@ export class ProductsListComponent implements OnInit {
       this.productsArray = this.cartService.loadcard();
     } else {
       this.action = true;
-      this.productsArray = this.dataService.loadCategoryProdacts(
-        selectedCategory
-      );
+      this.productsArray = this.dataService.loadCategoryProdacts(selectedCategory);
     }
   }
 }

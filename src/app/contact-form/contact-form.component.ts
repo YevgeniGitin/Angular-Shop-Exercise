@@ -1,23 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { trigger, state, transition, animate, style } from '@angular/animations';
 
 @Component({
   selector: 'app-contact-form',
   templateUrl: './contact-form.component.html',
   styleUrls: ['./contact-form.component.css'],
-  animations: [
-    trigger('fadeInOut', [
-      state('void', style({ opacity: 0 })),
-      transition('void <=> *', animate('1.5s'))
-    ])
-  ]
 })
 export class ContactFormComponent implements OnInit {
   email: string;
   subject: string;
   message: string;
   choose: boolean; //user confirmed send the form or not
-
   constructor() {}
   send() {
     if (this.choose) {
@@ -36,6 +28,5 @@ export class ContactFormComponent implements OnInit {
   confirmation(e) {
     this.choose = e;
   }
-
   ngOnInit() {}
 }

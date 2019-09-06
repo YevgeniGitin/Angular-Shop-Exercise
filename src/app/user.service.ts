@@ -37,6 +37,7 @@ export class UserService {
     this._userIndex=localStorage.getItem('id')? this.getUserIndexById(localStorage.getItem('id')):0;
     this._isAdmin=localStorage.getItem('id')? (this.getUserById(localStorage.getItem('id')).permission==='admin'):false;
   }
+  
   logout(){
     this.logIn = true;
     this.isAdmin = false;

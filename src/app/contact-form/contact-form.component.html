@@ -1,4 +1,4 @@
-<div class="contact" [@fadeInOut]>
+<div class="contact">
     <h1>Contact Form</h1>
     <form (ngSubmit)="send(); contactForm.reset();" #contactForm="ngForm">
         <input type="email" placeholder="Email" [(ngModel)]="email" #emailInput="ngModel" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required />

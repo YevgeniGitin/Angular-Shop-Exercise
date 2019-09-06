@@ -5,6 +5,7 @@ import translationJson from '../assets/data/translation.json';
   providedIn: 'root'
 })
 export class LocalizationService {
+
   _languages: string[] = ['HE', 'EN', 'RUS'];
   private _selectedLanguage: string = 'EN';
   private defultLanguage: string[] = translationJson.EN;
@@ -17,6 +18,7 @@ export class LocalizationService {
   get selectedLanguage(): string {
     return this._selectedLanguage;
   }
+
   set selectedLanguage(lan: string) {
     this._selectedLanguage = lan;
     this.translationLanguage = translationJson[lan];
@@ -30,5 +32,6 @@ export class LocalizationService {
       return word;
     }
   }
+  
   constructor() {}
 }
