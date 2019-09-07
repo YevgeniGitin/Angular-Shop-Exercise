@@ -12,11 +12,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./products-list.component.css'],
 })
 export class ProductsListComponent implements OnInit {
-<<<<<<< HEAD
-  constructor(private dataService: DataService, private cartService: CartService, private userService: UserService, private route: ActivatedRoute, private router: Router) {}
-=======
   constructor( private dataService: DataService, private cartService: CartService, private userService: UserService, private route: ActivatedRoute, private router: Router) { }
->>>>>>> master
   action: boolean; //what action to allow add or remove
   productsArray: Product[]; //products array
   //display the product

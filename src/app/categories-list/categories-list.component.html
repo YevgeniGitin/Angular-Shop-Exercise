@@ -1,10 +1,5 @@
-<<<<<<< HEAD
-<div class="categoryList" [@fadeInOut]>
-    <ul *ngFor="let category of (data| async)">
-=======
 <div class="categoryList">
     <ul *ngFor="let category of data">
->>>>>>> master
         <li (click)="getCategoriesProducts(category)"> {{ category.title }}</li>
     </ul>
     <ul>
