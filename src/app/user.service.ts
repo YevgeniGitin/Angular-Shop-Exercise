@@ -1,30 +1,14 @@
 import { Injectable } from '@angular/core';
 import { User } from '../modules/user';
 import { Product } from 'src/modules/product';
+import  Users  from '../assets/data/users.json'
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
    //users array
-   users:User[]=[
-    {
-      id: '654237651',
-      fullName:'Jon Smith',
-      userName:'user',
-      password:'user',
-      permission:'user',
-      productsInCard:[]
-    },
-    {
-      id: '846382058',
-      fullName:'Tod Tatal',
-      userName:'admin',
-      password:'admin',
-      permission:'admin',
-      productsInCard:[]
-    }
-  ];
+   users:User[]=Users;
 
   private _logIn:boolean;//flag some one is loged in true=not
   private _connectUser:User;//save user that is loged in from the local storage if it there

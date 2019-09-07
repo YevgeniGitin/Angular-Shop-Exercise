@@ -1,0 +1,17 @@
+[{
+        "id": "654237651",
+        "fullName": "Jon Smith",
+        "userName": "user",
+        "password": "user",
+        "permission": "user",
+        "productsInCard": []
+    },
+    {
+        "id": "846382058",
+        "fullName": "Tod Tatal",
+        "userName": "admin",
+        "password": "admin",
+        "permission": "admin",
+        "productsInCard": []
+    }
+]

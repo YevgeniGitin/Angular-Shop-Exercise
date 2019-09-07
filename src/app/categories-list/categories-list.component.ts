@@ -3,6 +3,7 @@ import { trigger, state, style, animate, transition} from '@angular/animations';
 import { Category } from '../../modules/category';
 import { DataService } from '../data.service';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-Categories-list',
@@ -16,7 +17,8 @@ import { Router } from '@angular/router';
   ]
 })
 export class CategoriesListComponent implements OnInit {
-  data: Category[];
+  
+  data: Observable<Category[]>;
   constructor(private dataService: DataService, private router: Router) {}
   //get category's products
   getCategoriesProducts(category: Category) {
@@ -28,6 +30,8 @@ export class CategoriesListComponent implements OnInit {
   }
   //init firs data to present
   ngOnInit() {
-    this.data = this.dataService.loadCategories();
+    this.data = this.dataService.entries;
+    this.data.subscribe();
   }
+
 }
