@@ -8,21 +8,14 @@ import { UserService } from './user.service';
 export class CartService {
   //add product to the card
   addProduct(product: Product) {
-    this.userService.users[this.userService.userIndex].productsInCard.push(
-      product
-    );
+    this.userService.users[this.userService.userIndex].productsInCard.push(product);
   }
   //remove item by index
   removeFromCard(product: Product) {
-    let index = this.userService.users[
-      this.userService.userIndex
-    ].productsInCard.indexOf(product);
+    let index = this.userService.users[this.userService.userIndex].productsInCard.indexOf(product);
     //if there is no such iten do nothing
     if (index !== -1) {
-      this.userService.users[this.userService.userIndex].productsInCard.splice(
-        index,
-        1
-      );
+      this.userService.users[this.userService.userIndex].productsInCard.splice(index,1);
     }
   }
   //get the items in the card arra

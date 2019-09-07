@@ -7,7 +7,6 @@ import { Component, OnInit, ContentChildren, ElementRef, QueryList, AfterViewIni
 })
 export class ContentProjectionLinkComponent implements OnInit, AfterViewInit {
   @ContentChildren('link') links: QueryList<ElementRef>;
-
   constructor() {}
   ngAfterViewInit() {
     //for each element set the target
@@ -15,6 +14,5 @@ export class ContentProjectionLinkComponent implements OnInit, AfterViewInit {
       link.nativeElement.setAttribute('target', '_blank');
     });
   }
-
   ngOnInit() {}
 }

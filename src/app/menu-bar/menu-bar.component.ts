@@ -10,12 +10,7 @@ import { LocalizationService } from '../localization.service';
   styleUrls: ['./menu-bar.component.css']
 })
 export class MenuBarComponent implements OnInit {
-  constructor(
-    private cartService: CartService,
-    private userService: UserService,
-    private router: Router,
-    private localizationService: LocalizationService
-  ) {}
+  constructor(private cartService: CartService, private userService: UserService, private router: Router, private localizationService: LocalizationService) {}
   count: number = this.cartService.getCount();
   //when loged out clear the local storage
   logOut() {

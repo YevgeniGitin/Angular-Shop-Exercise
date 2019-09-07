@@ -1,11 +1,12 @@
 .contact {
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
 h1 {
-    width: 50%;
+    width: 45%;
     background-color: rgb(23, 102, 102);
     border: 1px solid black;
     text-align: center;
@@ -18,7 +19,7 @@ form {
     flex-direction: column;
     align-items: center;
     border: 1px solid black;
-    width: 50%;
+    width: 45%;
 }
 
 input,
@@ -27,7 +28,10 @@ textarea {
 }
 
 textarea {
-    width: 70%
+    max-width: 70%;
+    min-width: 50%;
+    max-height: 14em;
+    min-height: 10em;
 }
 
 button {

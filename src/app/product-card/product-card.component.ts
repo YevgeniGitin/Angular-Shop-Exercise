@@ -9,6 +9,5 @@ import { Product } from '../../modules/product';
 export class ProductCardComponent implements OnInit {
   @Input() product: Product; //get product
   constructor() {}
-
   ngOnInit() {}
 }

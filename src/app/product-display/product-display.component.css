@@ -1,3 +1,7 @@
+.container {
+    width: 100%;
+}
+
 .productbox {
     width: 24%;
     margin: 1em 0 1em 0;

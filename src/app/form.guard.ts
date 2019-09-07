@@ -6,6 +6,7 @@ import { ProductFormComponent } from './product-form/product-form.component';
   providedIn: 'root'
 })
 export class FormGuard implements CanDeactivate<ProductFormComponent> {
+  
   canDeactivate(component: ProductFormComponent): boolean
 {
     if (component.contactForm.dirty) {

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { trigger, state, style, animate, transition} from '@angular/animations';
 import { Product } from '../../modules/product';
 import { CartService } from '../cart.service';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -11,25 +10,12 @@ import { UserService } from '../user.service';
   selector: 'app-product-display',
   templateUrl: './product-display.component.html',
   styleUrls: ['./product-display.component.css'],
-  animations: [
-    trigger('fadeInOut', [
-      state('void', style({ opacity: 0 })),
-      transition('void <=> *', animate('1s'))
-    ])
-  ]
 })
 export class ProductDisplayComponent implements OnInit {
   product: Product; //get the product to show
   action: boolean = this.route.snapshot.data['action'];
 
-  constructor(
-    private cartService: CartService,
-    private router: Router,
-    private userService: UserService,
-    private route: ActivatedRoute,
-    private dataService: DataService,
-    private location: Location
-  ) {}
+  constructor(private cartService: CartService, private router: Router, private userService: UserService, private route: ActivatedRoute, private dataService: DataService, private location: Location) {}
 
   addItem(product: Product) {
     this.cartService.addProduct(product);

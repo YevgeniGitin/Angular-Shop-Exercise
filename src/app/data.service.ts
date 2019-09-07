@@ -55,9 +55,7 @@ export class DataService {
   //delete product from the data
   deleteProduct(product: Product) {
     let categoryIndex = this.data.findIndex(o => o.id === product.categoryId);
-    let productIndex = this.data[categoryIndex].productArr.findIndex(
-      o => o === product
-    );
+    let productIndex = this.data[categoryIndex].productArr.findIndex(o => o === product);
     this.data[categoryIndex].productArr.splice(productIndex, 1);
   }
   //load products of one category

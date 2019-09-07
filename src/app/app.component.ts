@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { trigger, state, style, transition, animate} from '@angular/animations';
+import { fadeAnimation } from './animations';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  animations: [
+  animations: [fadeAnimation,
     trigger('menuBar', [
       state(
         'open',
@@ -28,9 +29,11 @@ export class AppComponent {
     this.showMenu = !this.showMenu;
     this.currentState = 'open';
   }
+
   getLanguage(e) {
     this.selectedLanguage = e;
   }
+  
   closeMenu() {
     this.showMenu = false;
   }

@@ -5,6 +5,7 @@ import { LocalizationService } from './localization.service';
   name: 'translation'
 })
 export class TranslationPipe implements PipeTransform {
+  
   constructor(private localizationService: LocalizationService) {}
 
   transform(word: string, language: string): string {

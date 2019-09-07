@@ -6,18 +6,11 @@ import { Product } from 'src/modules/product';
 import { UserService } from '../user.service';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
-import { trigger, state, style, transition, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-product-form',
   templateUrl: './product-form.component.html',
   styleUrls: ['./product-form.component.css'],
-  animations: [
-    trigger('fadeInOut', [
-      state('void', style({ opacity: 0 })),
-      transition('void <=> *', animate('1.5s'))
-    ])
-  ]
 })
 export class ProductFormComponent implements OnInit {
   selectedProduct: Product; //get product if we come from the edit function
@@ -25,13 +18,7 @@ export class ProductFormComponent implements OnInit {
   contactForm: FormGroup;
   categories: Category[] = this.dataService.loadCategories(); //load Categories
 
-  constructor(
-    private dataService: DataService,
-    private userService: UserService,
-    private fb: FormBuilder,
-    private route: ActivatedRoute,
-    private location: Location
-  ) {
+  constructor(private dataService: DataService, private userService: UserService, private fb: FormBuilder, private route: ActivatedRoute, private location: Location) {
     this.contactForm = this.fb.group({
       Category: [this.categories[0], Validators.required],
       Image: ['', Validators.required],
@@ -76,10 +63,7 @@ export class ProductFormComponent implements OnInit {
         //if was chenge
         this.dataService.deleteProduct(this.selectedProduct); //delete old product
         this.dataService.addProduct(product); //add new product
-        this.userService.updateProductsInCardAfterEdit(
-          this.selectedProduct,
-          product
-        ); //update users cards
+        this.userService.updateProductsInCardAfterEdit(this.selectedProduct,product); //update users cards
         this.location.back();
       }
     }

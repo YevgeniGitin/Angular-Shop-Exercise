@@ -10,15 +10,13 @@ import { ActivatedRoute, Router } from '@angular/router';
   selector: 'app-products-list',
   templateUrl: './products-list.component.html',
   styleUrls: ['./products-list.component.css'],
-  animations: [
-    trigger('fadeInOut', [
-      state('void', style({ opacity: 0 })),
-      transition('void => *', animate('1s'))
-    ])
-  ]
 })
 export class ProductsListComponent implements OnInit {
+<<<<<<< HEAD
   constructor(private dataService: DataService, private cartService: CartService, private userService: UserService, private route: ActivatedRoute, private router: Router) {}
+=======
+  constructor( private dataService: DataService, private cartService: CartService, private userService: UserService, private route: ActivatedRoute, private router: Router) { }
+>>>>>>> master
   action: boolean; //what action to allow add or remove
   productsArray: Product[]; //products array
   //display the product

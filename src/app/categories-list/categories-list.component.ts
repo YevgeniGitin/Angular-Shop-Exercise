@@ -9,12 +9,6 @@ import { Observable } from 'rxjs';
   selector: 'app-Categories-list',
   templateUrl: './Categories-list.component.html',
   styleUrls: ['./Categories-list.component.css'],
-  animations: [
-    trigger('fadeInOut', [
-      state('void', style({ opacity: 0 })),
-      transition('void <=> *', animate('1s'))
-    ])
-  ]
 })
 export class CategoriesListComponent implements OnInit {
   

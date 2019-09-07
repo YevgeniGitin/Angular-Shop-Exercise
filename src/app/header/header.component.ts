@@ -11,13 +11,11 @@ export class HeaderComponent implements OnInit {
   @Output() menu = new EventEmitter<void>(); //out put the menu flag(open or close)
   language: string = 'EN';
   languages: string[] = this.localizationService.languages;
-
   openmenu() {
     this.menu.emit(); //out put the menu flag(open or close)
   }
   changeLanguage() {
     this.localizationService.selectedLanguage = this.language;
   }
-
   ngOnInit() {}
 }

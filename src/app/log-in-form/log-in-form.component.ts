@@ -2,23 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
 import { User } from 'src/modules/user';
 import { Router } from '@angular/router';
-import { trigger, state, transition, style, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-log-in-form',
   templateUrl: './log-in-form.component.html',
   styleUrls: ['./log-in-form.component.css'],
-  animations: [
-    trigger('fadeInOut', [
-      state('void', style({ opacity: 0 })),
-      transition('void <=> *', animate('1.5s'))
-    ])
-  ]
 })
 export class LogInFormComponent implements OnInit {
   userName: string;
   password: string;
-
   constructor(private userService: UserService, private router: Router) {}
   //save the flags and data in serves and in local storage
   onSubmit() {
@@ -43,6 +35,5 @@ export class LogInFormComponent implements OnInit {
       this.router.navigate(['home']);
     }
   }
-
   ngOnInit() {}
 }
