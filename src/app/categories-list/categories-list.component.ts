@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { trigger, state, style, animate, transition} from '@angular/animations';
 import { Category } from '../../modules/category';
 import { DataService } from '../data.service';
 import { Router } from '@angular/router';
@@ -25,7 +24,6 @@ export class CategoriesListComponent implements OnInit {
   //init firs data to present
   ngOnInit() {
     this.data = this.dataService.entries;
-    this.data.subscribe();
   }
 
 }

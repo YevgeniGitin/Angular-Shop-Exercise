@@ -1,20 +1,21 @@
 <div class="container">
     <button *ngIf="action" class="back" (click)="goBack()">back</button>
-    <div class="box">
+    <div *ngIf="product | async;let p; else loading" class="box">
         <div class="productbox">
             <div class="closeContainer">
                 <button class="close" *ngIf="!action && !this.userService.logIn" (click)="close()">X</button>
             </div>
-            <h1>{{product.title}}</h1>
-            <img [src]="product.image" [alt]="product.Title">
-            <h3>Prise: {{product.price}} ILS</h3>
+            <h1>{{p.title}}</h1>
+            <img [src]="p.image" [alt]="p.Title">
+            <h3>Prise: {{p.price}} ILS</h3>
         </div>
         <div class="description">
-            <p>{{product.description}}</p>
+            <p>{{p.description}}</p>
         </div>
         <div class="card_buttons">
             <button *ngIf="action && !this.userService.logIn" (click)="addItem(product)">Add to card</button>
             <button *ngIf="!action && !this.userService.logIn" (click)="removeItem(product)">Remove from card</button>
         </div>
     </div>
+    <ng-template #loading>Loading User Data...</ng-template>
 </div>

@@ -1,31 +1,54 @@
 import { Injectable } from '@angular/core';
 import { User } from '../modules/user';
 import { Product } from 'src/modules/product';
-import  Users  from '../assets/data/users.json'
+import { HttpClient } from '@angular/common/http';
+import { map } from 'rxjs/operators';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-   //users array
-   users:User[]=Users;
-
+  //users array
+  users:User[];
+  private userBehaviorSubject=new BehaviorSubject<User>(null);
+  readonly user=this.userBehaviorSubject.asObservable();
+  private url:string='../assets/data/users.json';
   private _logIn:boolean;//flag some one is loged in true=not
   private _connectUser:User;//save user that is loged in from the local storage if it there
   private _userIndex:number;//index of user in the array for the card service
   private _isAdmin:boolean;//admin flag defult not
  //try to load data from local storage
-  constructor() { 
-    this._logIn=localStorage.getItem('id')? false:true;
-    this._connectUser=localStorage.getItem('id')?this.getUserById(localStorage.getItem('id')):undefined;
-    this._userIndex=localStorage.getItem('id')? this.getUserIndexById(localStorage.getItem('id')):0;
-    this._isAdmin=localStorage.getItem('id')? (this.getUserById(localStorage.getItem('id')).permission==='admin'):false;
+  constructor( private http:HttpClient) { 
+   this.loadInitialData(this.url);
+  }
+  //load data get request
+  private loadInitialData(url:string){
+    return this.http.get(url)
+      .pipe(map(json => json as User[]))
+      .toPromise()
+      .then((json)=>{
+        this.users=json;
+        this._logIn=localStorage.getItem('id')? false:true;
+        this._connectUser=localStorage.getItem('id')?this.getUserById(localStorage.getItem('id')):null;
+        this.userBehaviorSubject.next(this._connectUser);
+        this._userIndex=localStorage.getItem('id')? this.getUserIndexById(localStorage.getItem('id')):0;
+        this._isAdmin=localStorage.getItem('id')? (this.getUserById(localStorage.getItem('id')).permission==='admin'):false;
+      })
+      .catch(this.handleError);
+ }
+
+ private handleError(error: Response) {
+  console.error(error);
+  const msg = `Error status code ${error.status} at ${error.url}`;
+  return Promise.reject(msg || error);
   }
   
   logout(){
     this.logIn = true;
     this.isAdmin = false;
-    this.connectUser=undefined;
+    this.connectUser=null;
+    this.userBehaviorSubject.next(null);
     this.userIndex=0;
     localStorage.removeItem('id');
   }
@@ -70,18 +93,27 @@ export class UserService {
   set connectUser(user:User){
     this._connectUser=user;
     this._userIndex=this.users.findIndex(o=>o===user);
+    this.updateUser();
+  }
+//update user in Observable 
+  updateUser(){
+    this.userBehaviorSubject.next(this._connectUser);
   }
 
   //load name for the home page
-  loadName():string{
-    if(this.connectUser!==undefined){
-     return this.connectUser.fullName;
-    }else{
-      return '';
-    }
+  loadName():Observable<string>{
+    return this.user.pipe(
+      map((u)=>{
+        if(u===null){
+          return "";
+        }else{
+          return u.fullName;
+        }
+      })
+    );
   }
   //for the log in prosses if the user name is exists
-  loadUserByUserName(userName:string):User{
+  loadUserByUserName(userName:string): User{
     return this.users.find(o=>o.userName===userName);
   }
   //the function is update users products cards
@@ -94,7 +126,23 @@ export class UserService {
         index= user.productsInCard.findIndex(o=>o===oldProduct);
       }
     }
+    this.connectUser= this.users.find(u=>u.id===this.connectUser.id);
   }
-  
+
+  loadCart():Observable<Product[]>{
+    return this.user.pipe(
+      map(u=>this.getCart(u))  
+    );
+  }
+
+  getCart(u:User):Product[]{
+    let products:Product[];
+    if(u===null){
+      products=[];
+    }else{
+      products = u.productsInCard;
+    }
+    return products;
+  }
 
 }

@@ -1,5 +1,5 @@
 <div class="homepage">
     <p>Welcome
-        <ng-container *ngIf="!this.userService.logInFlag">{{name}}</ng-container> to the great shopping site
+        <ng-container *ngIf="!this.userService.logInFlag">{{name | async}}</ng-container> to the great shopping site
     </p>
 </div>

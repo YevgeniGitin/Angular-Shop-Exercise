@@ -1,32 +1,39 @@
 import { Injectable } from '@angular/core';
-import productsCategories from '../assets/data/ProductCategory.json';
 import { Category } from '../modules/category';
 import { Product } from '../modules/product';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
-import { Observable, BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
   private _entries = new BehaviorSubject<Category[]>([]);
+  private _productBehaviorSubject = new BehaviorSubject<Product[]>([]);
+  readonly products=this._productBehaviorSubject.asObservable();
   readonly entries = this._entries.asObservable();
-  private data: Category[];
+  private allProducts:Product[];
+  private _data: Category[];
   private url:string='../assets/data/ProductCategory.json';
 
   constructor(private http: HttpClient) {
     this.loadInitialData(this.url);
-    // console.log(this.data);
   }
 
-  loadInitialData(url:string){
+  get data(): Category[]{
+    return this._data;
+  }
+//load data from json file and update the data array and the behavior subject
+  private loadInitialData(url:string){
      this.http.get(url)
     .pipe(map(json => json as Category[]))
     .toPromise()
     .then((json)=>{
       this._entries.next(json);
-      this.data=json;
+      this._data=json;
+      this.allProducts=this.getAllProducts();
+      this._productBehaviorSubject.next( this.allProducts);
     })
     .catch(this.handleError);
     this._entries.next(this.data);
@@ -38,33 +45,42 @@ export class DataService {
     return Promise.reject(msg || error);
     }
 
-  getProductByid(id: string): Product {
-    let products: Product[] = this.loadAllProducts();
-    return products.find(item => item.productId === id);
+  getProductByidObservable(id: string): Observable<Product> {
+    return this.products.pipe(
+      map(o=>o.find(p=>p.productId===id))
+    );
   }
 
-  //load all Categories
-  loadCategories(): Category[] {
-    return this.data;
+  getProductByid(id: string): Product {
+    return this.allProducts.find(item => item.productId === id);
   }
-  //add product to the data
-  addProduct(product: Product) {
+  //add product to the data and to the products list and updates the behavior subjects
+  addProduct(product: Product)  {
     let categoryIndex = this.data.findIndex(o => o.id === product.categoryId);
     this.data[categoryIndex].productArr.push(product);
+    let index = this.allProducts.findIndex(o => o.categoryId === product.categoryId);
+    this.allProducts.splice(index,0,product);
+    this._entries.next(this.data);
+    this._productBehaviorSubject.next(this.allProducts);
   }
-  //delete product from the data
+  //delete product from the data and from products list and updates the behavior subjects
   deleteProduct(product: Product) {
     let categoryIndex = this.data.findIndex(o => o.id === product.categoryId);
     let productIndex = this.data[categoryIndex].productArr.findIndex(o => o === product);
     this.data[categoryIndex].productArr.splice(productIndex, 1);
+    productIndex = this.allProducts.findIndex(o => o === product);
+    this.allProducts.splice(productIndex, 1);
+    this._entries.next(this.data);
+    this._productBehaviorSubject.next(this.allProducts);
   }
   //load products of one category
-  loadCategoryProdacts(id: string): Product[] {
-    let category: Category = this.data.find(o => o.id === id);
-    return category.productArr;
+  loadCategoryProdacts(id: string): Observable<Product[]> {
+    return this.products.pipe(
+      map(o=>o.filter(p=>p.categoryId===id))
+    );
   }
-  //load all products
-  loadAllProducts(): Product[] {
+//local function for the service to load all products to the array
+  private getAllProducts(): Product[]{
     let products: Product[] = new Array();
     for (let category of this.data) {
       for (let item of category.productArr) {

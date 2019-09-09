@@ -3,7 +3,7 @@
         <router-outlet></router-outlet>
     </div>
     <div class="cards_box">
-        <div class="card-div" *ngFor="let product of productsArray">
+        <div class="card-div" *ngFor="let product of (productsArray | async)">
             <app-product-card [product]="product" (click)="clickOnProduct(product)"></app-product-card>
             <button *ngIf="this.userService.isAdmin && action" (click)="editProduct(product)">edit</button>
         </div>

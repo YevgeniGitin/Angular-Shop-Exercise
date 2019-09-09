@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -7,7 +8,9 @@ import { UserService } from '../user.service';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit {
-  name: string = this.userService.loadName();
-  constructor(private userService: UserService) {}
+  name: Observable<string>;
+  constructor(private userService: UserService) {
+    this.name=this.userService.loadName();
+  }
   ngOnInit() {}
 }

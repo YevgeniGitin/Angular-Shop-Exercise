@@ -1,35 +1,53 @@
 import { Injectable } from '@angular/core';
 import { Product } from '../modules/product';
 import { UserService } from './user.service';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { map, tap } from 'rxjs/operators';
+import { DataService } from './data.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
+  readonly cart:Observable<Product[]>;
+  
+  constructor(private userService: UserService, private dataService:DataService ) {
+    this.cart=this.userService.user.pipe(
+      map(u=>{
+        if(u===null){
+          return [];
+        }else{
+          return u.productsInCard;
+        }
+      })
+    );
+  }
   //add product to the card
-  addProduct(product: Product) {
+  addProduct(id:string) {
+    let product=this.dataService.getProductByid(id);
     this.userService.users[this.userService.userIndex].productsInCard.push(product);
+    this.userService.updateUser();
   }
   //remove item by index
-  removeFromCard(product: Product) {
+  removeFromCard(id:string) {
+    let product=this.dataService.getProductByid(id);
     let index = this.userService.users[this.userService.userIndex].productsInCard.indexOf(product);
     //if there is no such iten do nothing
     if (index !== -1) {
       this.userService.users[this.userService.userIndex].productsInCard.splice(index,1);
+      this.userService.updateUser();
     }
-  }
-  //get the items in the card arra
-  loadcard(): Product[] {
-    return this.userService.users[this.userService.userIndex].productsInCard;
   }
   //get the number of items in thecard for the menu
-  getCount(): number {
-    if (this.userService.userIndex === undefined) {
-      return 0;
-    } else {
-      return this.userService.users[this.userService.userIndex].productsInCard.length;
-    }
+  getCount():Observable<number> {
+    return this.cart.pipe(
+      map(c=>{
+        if (this.userService.userIndex === undefined) {
+            return 0;
+          } else {
+            return c.length;
+          }
+      })
+    );
   }
-
-  constructor(private userService: UserService) {}
 }

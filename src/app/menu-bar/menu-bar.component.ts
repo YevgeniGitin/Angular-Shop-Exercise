@@ -3,6 +3,7 @@ import { CartService } from '../cart.service';
 import { UserService } from '../user.service';
 import { Router } from '@angular/router';
 import { LocalizationService } from '../localization.service';
+import { Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-menu-bar',
@@ -11,11 +12,16 @@ import { LocalizationService } from '../localization.service';
 })
 export class MenuBarComponent implements OnInit {
   constructor(private cartService: CartService, private userService: UserService, private router: Router, private localizationService: LocalizationService) {}
-  count: number = this.cartService.getCount();
+  count:Observable<number>;
+  language:string="EN";
+  sub: Subscription;
   //when loged out clear the local storage
   logOut() {
     this.userService.logout();
     this.router.navigate(['/logIn']);
   }
-  ngOnInit() {}
+  ngOnInit() {
+    this.sub=this.localizationService.selectedLanguage.subscribe(ln=>this.language=ln);
+    this.count= this.cartService.getCount();
+  }
 }

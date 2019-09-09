@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { DataService } from '../data.service';
 import { Location } from '@angular/common';
 import { UserService } from '../user.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-product-display',
@@ -12,18 +13,19 @@ import { UserService } from '../user.service';
   styleUrls: ['./product-display.component.css'],
 })
 export class ProductDisplayComponent implements OnInit {
-  product: Product; //get the product to show
+  product: Observable<Product>; //get the product to show
   action: boolean = this.route.snapshot.data['action'];
+  id:string;
 
   constructor(private cartService: CartService, private router: Router, private userService: UserService, private route: ActivatedRoute, private dataService: DataService, private location: Location) {}
 
-  addItem(product: Product) {
-    this.cartService.addProduct(product);
+  addItem() {
+    this.cartService.addProduct(this.id);
     alert('The product added to the card');
   }
   //remove product from the cart
-  removeItem(product) {
-    this.cartService.removeFromCard(product);
+  removeItem() {
+    this.cartService.removeFromCard(this.id);
     this.router.navigate(['/cart']); //after the removing go back to the cart list
   }
   //back button
@@ -39,6 +41,7 @@ export class ProductDisplayComponent implements OnInit {
   }
 
   loadeProduct(id: string) {
-    this.product = this.dataService.getProductByid(id);
+    this.id=id;
+    this.product = this.dataService.getProductByidObservable(id);
   }
 }

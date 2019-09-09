@@ -1,5 +1,5 @@
 <div class="categoryList">
-    <ul *ngFor="let category of data">
+    <ul *ngFor="let category of (data|async)">
         <li (click)="getCategoriesProducts(category)"> {{ category.title }}</li>
     </ul>
     <ul>

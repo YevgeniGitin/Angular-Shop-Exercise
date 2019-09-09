@@ -6,6 +6,7 @@ import { Product } from 'src/modules/product';
 import { UserService } from '../user.service';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-product-form',
@@ -16,9 +17,10 @@ export class ProductFormComponent implements OnInit {
   selectedProduct: Product; //get product if we come from the edit function
   newProduct: boolean = true; //flag if we add new item or edit item
   contactForm: FormGroup;
-  categories: Category[] = this.dataService.loadCategories(); //load Categories
+  categories: Category[]; //load Categories
 
   constructor(private dataService: DataService, private userService: UserService, private fb: FormBuilder, private route: ActivatedRoute, private location: Location) {
+    this.categories = this.dataService.data;
     this.contactForm = this.fb.group({
       Category: [this.categories[0], Validators.required],
       Image: ['', Validators.required],

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import translationJson from '../assets/data/translation.json';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -7,22 +8,20 @@ import translationJson from '../assets/data/translation.json';
 export class LocalizationService {
 
   _languages: string[] = ['HE', 'EN', 'RUS'];
-  private _selectedLanguage: string = 'EN';
+  private lanBehaviorSubject=new BehaviorSubject<string>("EN");
+  readonly selectedLanguage = this.lanBehaviorSubject.asObservable();
   private defultLanguage: string[] = translationJson.EN;
   private translationLanguage: string[] = translationJson.EN;
   //provide languages list
   get languages(): string[] {
     return this._languages;
   }
-  //provide selected language
-  get selectedLanguage(): string {
-    return this._selectedLanguage;
+
+  changelanguage(ln:string){
+    this.lanBehaviorSubject.next(ln);
+    this.translationLanguage=translationJson[ln];
   }
 
-  set selectedLanguage(lan: string) {
-    this._selectedLanguage = lan;
-    this.translationLanguage = translationJson[lan];
-  }
   //translate a word by getting the word and language
   translate(word: string, language: string): string {
     if (language !== 'EN') {

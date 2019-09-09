@@ -15,7 +15,7 @@ export class HeaderComponent implements OnInit {
     this.menu.emit(); //out put the menu flag(open or close)
   }
   changeLanguage() {
-    this.localizationService.selectedLanguage = this.language;
+    this.localizationService.changelanguage(this.language);
   }
   ngOnInit() {}
 }
