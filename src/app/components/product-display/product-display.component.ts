@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Product } from '../../modules/product';
-import { CartService } from '../cart.service';
+import { Product } from '../../../modules/product';
+import { CartService } from '../../services/cart.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { DataService } from '../data.service';
+import { DataService } from '../../services/data.service';
 import { Location } from '@angular/common';
-import { UserService } from '../user.service';
+import { UserService } from '../../services/user.service';
 import { Observable } from 'rxjs';
 
 @Component({

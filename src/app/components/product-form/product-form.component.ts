@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { DataService } from '../data.service';
-import { Category } from '../../modules/category';
+import { DataService } from '../../services/data.service';
+import { Category } from '../../../modules/category';
 import { FormBuilder, FormGroup, Validators, AbstractControl} from '@angular/forms';
 import { Product } from 'src/modules/product';
-import { UserService } from '../user.service';
+import { UserService } from '../../services/user.service';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { Observable } from 'rxjs';

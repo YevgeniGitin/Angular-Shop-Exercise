@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Product } from '../modules/product';
+import { Product } from '../../modules/product';
 import { UserService } from './user.service';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';

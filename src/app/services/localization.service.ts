@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import translationJson from '../assets/data/translation.json';
+import translationJson from '../../assets/data/translation.json';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
