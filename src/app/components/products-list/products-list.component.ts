@@ -37,7 +37,7 @@ export class ProductsListComponent implements OnInit {
     } else if (selectedCategory === null) {
       //if it is shoping card list
       this.action = false;
-      this.productsArray = this.userService.loadCart();
+      this.productsArray = this.cartService.cart;
     } else {
       this.action = true;
       this.productsArray = this.dataService.loadCategoryProdacts(selectedCategory);
