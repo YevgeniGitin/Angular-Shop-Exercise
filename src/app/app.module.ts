@@ -20,7 +20,8 @@ import { ContactFormComponent } from './components/contact-form/contact-form.com
 import { TranslationPipe } from './pipes/translation.pipe';
 import { ConfirmationDirective } from './directives/confirmation.directive';
 import { NotFoundComponent } from './components/not-found/not-found.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { LoggerInterceptor } from './logger.interceptor';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,7 @@ import { HttpClientModule } from '@angular/common/http';
     NotFoundComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule,FormsModule,ReactiveFormsModule,HttpClientModule],
-  providers: [],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: LoggerInterceptor, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
