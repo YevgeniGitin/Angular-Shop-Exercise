@@ -6,7 +6,6 @@ import { Product } from 'src/modules/product';
 import { UserService } from '../../services/user.service';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-product-form',

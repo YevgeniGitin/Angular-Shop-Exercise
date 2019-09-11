@@ -110,7 +110,7 @@ export class UserService {
     return this.user.pipe(
       map((u)=>{
         if(u===null){
-          return "";
+          return '';
         }else{
           return u.fullName;
         }

@@ -13,7 +13,7 @@ import { Observable, Subscription } from 'rxjs';
 export class MenuBarComponent implements OnInit {
   constructor(private cartService: CartService, private userService: UserService, private router: Router, private localizationService: LocalizationService) {}
   count:Observable<number>;
-  language:string="EN";
+  language:string='EN';
   sub: Subscription;
   //when loged out clear the local storage
   logOut() {

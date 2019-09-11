@@ -11,6 +11,7 @@ export class FormGuard implements CanDeactivate<ProductFormComponent> {
 {
     if (component.contactForm.dirty) {//check if the form is dirty
       if(component.isSubmit){//check if it is submit action if yes do not ask
+        component.isSubmit=false;//change the flag to init for next use
         return true;
       }else{
         return confirm('Are you sure you whant to leave?');

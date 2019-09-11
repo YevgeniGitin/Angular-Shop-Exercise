@@ -8,7 +8,7 @@ import { BehaviorSubject } from 'rxjs';
 export class LocalizationService {
 
   _languages: string[] = ['HE', 'EN', 'RUS'];
-  private lanBehaviorSubject=new BehaviorSubject<string>("EN");
+  private lanBehaviorSubject=new BehaviorSubject<string>('EN');
   readonly selectedLanguage = this.lanBehaviorSubject.asObservable();
   private defultLanguage: string[] = translationJson.EN;
   private translationLanguage: string[] = translationJson.EN;
