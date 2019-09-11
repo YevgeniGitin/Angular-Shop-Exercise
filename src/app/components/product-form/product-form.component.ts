@@ -18,6 +18,7 @@ export class ProductFormComponent implements OnInit {
   newProduct: boolean = true; //flag if we add new item or edit item
   contactForm: FormGroup;
   categories: Category[]; //load Categories
+  isSubmit:boolean=false;
 
   constructor(private dataService: DataService, private userService: UserService, private fb: FormBuilder, private route: ActivatedRoute, private location: Location) {
     this.categories = this.dataService.data;
@@ -52,6 +53,7 @@ export class ProductFormComponent implements OnInit {
       price: formModel.Price,
       title: formModel.Title
     };
+    this.isSubmit=true;
     if (this.newProduct) {
       //add new prodact
       this.dataService.addProduct(product);

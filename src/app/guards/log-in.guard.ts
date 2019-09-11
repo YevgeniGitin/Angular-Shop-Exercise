@@ -6,12 +6,10 @@ import { UserService } from '../services/user.service';
   providedIn: 'root'
 })
 export class LogInGuard implements CanActivate {
-
   constructor(private userService: UserService, private router: Router) {}
   
   canActivate() {
-    if (this.userService.logIn) {
-      this.userService.logout();
+    if (localStorage.getItem('id')===null) {
       this.router.navigate(['logIn']);
     } else {
       return true;

@@ -37,7 +37,7 @@ export class ProductDisplayComponent implements OnInit {
   }
   //get the id of the product and listeniing for any change
   ngOnInit() {
-    this.route.paramMap.subscribe(id => this.loadeProduct(id.get('id')));
+    this.route.paramMap.subscribe(param => this.loadeProduct(param.get('id')));
   }
 
   loadeProduct(id: string) {

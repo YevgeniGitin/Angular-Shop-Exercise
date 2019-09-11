@@ -92,7 +92,12 @@ export class UserService {
 
   set connectUser(user:User){
     this._connectUser=user;
-    this._userIndex=this.users.findIndex(o=>o===user);
+    if(user!==null){
+      this._userIndex=this.users.findIndex(o=>o===user);
+    }else{
+      this._userIndex=0;
+    }
+    
     this.updateUser();
   }
 //update user in Observable 

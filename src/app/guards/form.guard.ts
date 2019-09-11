@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, CanDeactivate} from '@angular/router';
+import { CanDeactivate} from '@angular/router';
 import { ProductFormComponent } from '../components/product-form/product-form.component';
 
 @Injectable({
@@ -9,8 +9,12 @@ export class FormGuard implements CanDeactivate<ProductFormComponent> {
   
   canDeactivate(component: ProductFormComponent): boolean
 {
-    if (component.contactForm.dirty) {
-      return confirm('Are you sure?');
+    if (component.contactForm.dirty) {//check if the form is dirty
+      if(component.isSubmit){//check if it is submit action if yes do not ask
+        return true;
+      }else{
+        return confirm('Are you sure you whant to leave?');
+      }
     } else {
       return true;
     }
