@@ -18,7 +18,7 @@ export class ProductDisplayComponent implements OnInit {
   id:string;
 
   constructor(private cartService: CartService, private router: Router, private userService: UserService, private route: ActivatedRoute, private dataService: DataService, private location: Location) {}
-
+//get id of the product and add him to the cart
   addItem() {
     this.cartService.addProduct(this.id);
     alert('The product added to the card');
@@ -37,10 +37,10 @@ export class ProductDisplayComponent implements OnInit {
   }
   //get the id of the product and listeniing for any change
   ngOnInit() {
-    this.route.paramMap.subscribe(param => this.loadeProduct(param.get('id')));
+    this.route.paramMap.subscribe(param => this.loadProduct(param.get('id')));
   }
 
-  loadeProduct(id: string) {
+  loadProduct(id: string) {
     this.id=id;
     this.product = this.dataService.getProductByidObservable(id);
   }

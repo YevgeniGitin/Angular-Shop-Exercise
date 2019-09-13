@@ -16,12 +16,11 @@ export class LocalizationService {
   get languages(): string[] {
     return this._languages;
   }
-
+  //change language and push to the BehaviorSubject
   changelanguage(ln:string){
     this.lanBehaviorSubject.next(ln);
     this.translationLanguage=translationJson[ln];
   }
-
   //translate a word by getting the word and language
   translate(word: string, language: string): string {
     if (language !== 'EN') {

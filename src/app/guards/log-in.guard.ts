@@ -9,7 +9,7 @@ export class LogInGuard implements CanActivate {
   constructor(private userService: UserService, private router: Router) {}
   
   canActivate() {
-    if (localStorage.getItem('id')===null) {
+    if (localStorage.getItem('id')===null) {//check if localStorage has an id value if yes the user is loged in
       this.router.navigate(['logIn']);
     } else {
       return true;

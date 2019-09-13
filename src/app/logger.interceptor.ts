@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
     providedIn: 'root'
 })
 export class LoggerInterceptor implements HttpInterceptor{
+    //log the request data
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         let ans:string;
         if(req.url==='../assets/data/users.json'){
@@ -13,7 +14,7 @@ export class LoggerInterceptor implements HttpInterceptor{
         }else{
             ans='products';
         }
-        console.log(`load ${ans}`);
+        console.log(`load ${ans} from ${req.url}`);
         return next.handle(req);
     }
 }

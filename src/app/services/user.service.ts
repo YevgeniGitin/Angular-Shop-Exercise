@@ -18,23 +18,25 @@ export class UserService {
   private _connectUser:User;//save user that is loged in from the local storage if it there
   private _userIndex:number;//index of user in the array for the card service
   private _isAdmin:boolean;//admin flag defult not
+  private userPromise:Promise<User[]>;
  //try to load data from local storage
   constructor( private http:HttpClient) { 
-   this.loadInitialData(this.url);
+   this.userPromise=this.loadInitialData(this.url);
+   this.userPromise.then((json)=>{
+      this.users=json;
+      this._logIn=localStorage.getItem('id')? false:true;
+      this._connectUser=localStorage.getItem('id')?this.getUserById(localStorage.getItem('id')):null;
+      this.userBehaviorSubject.next(this._connectUser);
+      this._userIndex=localStorage.getItem('id')? this.getUserIndexById(localStorage.getItem('id')):0;
+      this._isAdmin=localStorage.getItem('id')? (this.getUserById(localStorage.getItem('id')).permission==='admin'):false;
+    })
+    
   }
   //load data get request
-  private loadInitialData(url:string){
+  private loadInitialData(url:string):Promise<User[]>{
     return this.http.get(url)
       .pipe(map(json => json as User[]))
       .toPromise()
-      .then((json)=>{
-        this.users=json;
-        this._logIn=localStorage.getItem('id')? false:true;
-        this._connectUser=localStorage.getItem('id')?this.getUserById(localStorage.getItem('id')):null;
-        this.userBehaviorSubject.next(this._connectUser);
-        this._userIndex=localStorage.getItem('id')? this.getUserIndexById(localStorage.getItem('id')):0;
-        this._isAdmin=localStorage.getItem('id')? (this.getUserById(localStorage.getItem('id')).permission==='admin'):false;
-      })
       .catch(this.handleError);
  }
 
@@ -42,6 +44,10 @@ export class UserService {
   console.error(error);
   const msg = `Error status code ${error.status} at ${error.url}`;
   return Promise.reject(msg || error);
+  }
+  //for is admin guard to check if it is a admin
+  getUserPromise():Promise<User[]>{
+    return this.userPromise;
   }
   
   logout(){
@@ -62,7 +68,7 @@ export class UserService {
     let index:number=this.users.findIndex(o=>o.id===id);
     return index;
   }
-
+ 
   get isAdmin():boolean{
     return this._isAdmin;
   }
@@ -133,21 +139,10 @@ export class UserService {
     }
     this.connectUser= this.users.find(u=>u.id===this.connectUser.id);
   }
-
+  //return loged in user cart
   loadCart():Observable<Product[]>{
     return this.user.pipe(
-      map(u=>this.getCart(u))  
+      map(u=>u.productsInCard)  
     );
   }
-
-  getCart(u:User):Product[]{
-    let products:Product[];
-    if(u===null){
-      products=[];
-    }else{
-      products = u.productsInCard;
-    }
-    return products;
-  }
-
 }

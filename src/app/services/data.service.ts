@@ -16,27 +16,35 @@ export class DataService {
   private allProducts:Product[];
   private _data: Category[];
   private url:string='../assets/data/ProductCategory.json';
+  private categoriesPromise: Promise<Category[]>;
 
   constructor(private http: HttpClient) {
-    this.loadInitialData(this.url);
+    this.categoriesPromise=this.loadInitialData();
+    this.categoriesPromise.then((json)=>{
+      this._entries.next(json);
+      this._data=json;
+      this.allProducts=this.getAllProducts();
+      this._productBehaviorSubject.next( this.allProducts);
+    });
   }
 
   get data(): Category[]{
     return this._data;
   }
 //load data from json file and update the data array and the behavior subject
-  private loadInitialData(url:string){
-     this.http.get(url)
-    .pipe(map(json => json as Category[]))
+  private loadInitialData(): Promise<Category[]>{
+    return this.getData()
     .toPromise()
-    .then((json)=>{
-      this._entries.next(json);
-      this._data=json;
-      this.allProducts=this.getAllProducts();
-      this._productBehaviorSubject.next( this.allProducts);
-    })
     .catch(this.handleError);
-    this._entries.next(this.data);
+  }
+
+  private getData():Observable<Category[]>{
+    return this.http.get(this.url)
+      .pipe(map(json => json as Category[]));
+  }
+
+  getCategoriesPromise(){
+    return this.categoriesPromise;
   }
 
   private handleError(error: Response) {
