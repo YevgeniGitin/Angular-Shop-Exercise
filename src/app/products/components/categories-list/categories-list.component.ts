@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Category } from '../../../modules/category';
+import { Category } from '../../../core/models/category';
 import { DataService } from '../../services/data.service';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';

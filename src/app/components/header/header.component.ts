@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { LocalizationService } from '../../services/localization.service';
+import { LocalizationService } from '../../core/services/localization.service';
 
 @Component({
   selector: 'app-header',

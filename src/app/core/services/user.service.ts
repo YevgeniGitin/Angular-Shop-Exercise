@@ -1,13 +1,11 @@
 import { Injectable } from '@angular/core';
-import { User } from '../../modules/user';
-import { Product } from 'src/modules/product';
+import { User } from '../models/user';
+import { Product } from 'src/app/core/models/product';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { BehaviorSubject, Observable } from 'rxjs';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class UserService {
   //users array
   users:User[];

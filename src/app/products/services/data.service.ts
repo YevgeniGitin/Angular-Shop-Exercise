@@ -1,13 +1,11 @@
 import { Injectable } from '@angular/core';
-import { Category } from '../../modules/category';
-import { Product } from '../../modules/product';
+import { Category } from '../../core/models/category';
+import { Product } from '../../core/models/product';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { BehaviorSubject, Observable } from 'rxjs';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class DataService {
   private _entries = new BehaviorSubject<Category[]>([]);
   private _productBehaviorSubject = new BehaviorSubject<Product[]>([]);

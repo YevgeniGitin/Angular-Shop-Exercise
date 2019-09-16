@@ -1,10 +1,8 @@
 import { Injectable } from '@angular/core';
-import translationJson from '../../assets/data/translation.json';
+import translationJson from '../../../assets/data/translation.json';
 import { BehaviorSubject } from 'rxjs';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class LocalizationService {
 
   _languages: string[] = ['HE', 'EN', 'RUS'];
