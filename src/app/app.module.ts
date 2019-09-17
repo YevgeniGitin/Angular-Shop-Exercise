@@ -13,13 +13,12 @@ import { ContentProjectionLinkComponent } from './components/content-projection-
 import { ContactFormComponent } from './components/contact-form/contact-form.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { LoggerInterceptor } from './logger.interceptor';
+import { LoggerInterceptor } from './core/logger.interceptor';
 import { LogInModule } from './logIn/logIn.module';
 import { ProductsModule } from './products/products.module';
 import { CoreModule } from './core/core.module';
 import { CommonModule } from '@angular/common';
-import { TranslationPipe } from './pipes/translation.pipe';
-import { ConfirmationDirective } from './directives/confirmation.directive';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -32,8 +31,6 @@ import { ConfirmationDirective } from './directives/confirmation.directive';
     ContentProjectionLinkComponent,
     ContactFormComponent,
     NotFoundComponent,
-    TranslationPipe,
-    ConfirmationDirective
   ],
   imports: [
     BrowserModule,
@@ -44,7 +41,8 @@ import { ConfirmationDirective } from './directives/confirmation.directive';
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    SharedModule
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: LoggerInterceptor, multi: true }],
   bootstrap: [AppComponent]

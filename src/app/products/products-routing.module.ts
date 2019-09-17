@@ -1,11 +1,13 @@
 import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
-import { ProductsListComponent } from '../components/products-list/products-list.component';
-import { ProductDisplayComponent } from '../components/product-display/product-display.component';
+// import { ProductsListComponent } from '../components/products-list/products-list.component';
+// import { ProductDisplayComponent } from '../components/product-display/product-display.component';
 import { ProductFormComponent } from './components/product-form/product-form.component';
 import { IsAdminGuard } from '../core/guards/is-admin.guard';
 import { FormGuard } from '../core/guards/form.guard';
 import { CategoriesListComponent } from './components/categories-list/categories-list.component';
+import { ProductsListComponent } from '../shared/components/products-list/products-list.component';
+import { ProductDisplayComponent } from '../shared/components/product-display/product-display.component';
 
 const routes: Routes = [
     {path: 'category-list', component: CategoriesListComponent},

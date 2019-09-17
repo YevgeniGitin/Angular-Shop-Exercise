@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { Product } from '../core/models/product';
-import { UserService } from '../core/services/user.service';
+import { Product } from '../../core/models/product';
+import { UserService } from '../../core/services/user.service';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { DataService } from '../products/services/data.service';
+import { DataService } from '../../products/services/data.service';
 
 @Injectable({
   providedIn: 'root'
@@ -37,6 +37,12 @@ export class CartService {
       this.userService.users[this.userService.userIndex].productsInCard.splice(index,1);
       this.userService.updateUser();
     }
+  }
+
+  getProductFromCart(id:string):Observable<Product>{
+    return this.cart.pipe(
+      map(productsInCart=>productsInCart.find(p=>p.productId===id))
+    );
   }
   //get the number of items in thecard for the menu
   getCount():Observable<number> {

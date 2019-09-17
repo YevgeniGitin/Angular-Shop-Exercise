@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Product } from '../../core/models/product';
-import { DataService } from '../../products/services/data.service';
-import { CartService } from '../../services/cart.service';
-import { UserService } from '../../core/services/user.service';
+import { Product } from '../../../core/models/product';
+import { DataService } from '../../../products/services/data.service';
+import { CartService } from '../../../cart/services/cart.service';
+import { UserService } from '../../../core/services/user.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
