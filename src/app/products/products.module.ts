@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { DataService } from './services/data.service';
 import { CategoriesListComponent } from './components/categories-list/categories-list.component';
 import { SharedModule } from '../shared/shared.module';
+import { ProductsListComponent } from './components/products-list/products-list.component';
 
 @NgModule({
     imports: [
@@ -18,6 +19,7 @@ import { SharedModule } from '../shared/shared.module';
         DataService
      ],
     declarations: [
+        ProductsListComponent,
         ProductFormComponent,
         CategoriesListComponent
     ],

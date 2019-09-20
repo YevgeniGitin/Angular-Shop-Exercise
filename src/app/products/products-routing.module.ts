@@ -6,7 +6,7 @@ import { ProductFormComponent } from './components/product-form/product-form.com
 import { IsAdminGuard } from '../core/guards/is-admin.guard';
 import { FormGuard } from '../core/guards/form.guard';
 import { CategoriesListComponent } from './components/categories-list/categories-list.component';
-import { ProductsListComponent } from '../shared/components/products-list/products-list.component';
+import { ProductsListComponent } from './components/products-list/products-list.component';
 import { ProductDisplayComponent } from '../shared/components/product-display/product-display.component';
 
 const routes: Routes = [
