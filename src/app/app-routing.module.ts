@@ -6,7 +6,7 @@ import { ContactFormComponent } from './components/contact-form/contact-form.com
 import { NotFoundComponent } from './components/not-found/not-found.component';
 
 const routes: Routes = [
-  {path: '', redirectTo: '/home', pathMatch: 'full' },
+  {path: '',redirectTo:"/home", pathMatch:"full" },
   {path: 'home', component: HomeComponent},
   {path: 'about', component: AboutComponent},
   {path: 'cart', loadChildren: () => import('./cart/cart.module').then(m => m.CartModule)},

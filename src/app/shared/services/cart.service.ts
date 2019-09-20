@@ -5,20 +5,15 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { DataService } from '../../products/services/data.service';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class CartService {
   readonly cart:Observable<Product[]>;
   
   constructor(private userService: UserService, private dataService:DataService ) {
     this.cart=this.userService.user.pipe(
       map(u=>{
-        if(u===null){
-          return [];
-        }else{
-          return u.productsInCard;
-        }
+        return u? u.productsInCard:[];
+
       })
     );
   }

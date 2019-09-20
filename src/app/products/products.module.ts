@@ -15,7 +15,7 @@ import { SharedModule } from '../shared/shared.module';
         CommonModule
     ],
     providers: [
-        DataService 
+        DataService
      ],
     declarations: [
         ProductFormComponent,

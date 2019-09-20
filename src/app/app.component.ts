@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { trigger, state, style, transition, animate} from '@angular/animations';
-import { fadeAnimation } from './animations';
+import { fadeAnimation } from './shared/animations';
 
 @Component({
   selector: 'app-root',

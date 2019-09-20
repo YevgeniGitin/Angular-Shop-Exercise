@@ -8,7 +8,7 @@ const routes: Routes = [
     {path: 'cart', component: ProductsListComponent,
       canActivate: [LogInGuard],
       children: [
-        {path: 'product-details/:id', component: ProductDisplayComponent, data: { action: false }}
+        {path: 'product-details/:id', component: ProductDisplayComponent, data: { action: false }, pathMatch:'full'}
       ]
     }
   ];

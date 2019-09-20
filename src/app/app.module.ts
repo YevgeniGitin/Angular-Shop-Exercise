@@ -38,11 +38,13 @@ import { SharedModule } from './shared/shared.module';
     ProductsModule,
     CoreModule,
     LogInModule,
-    AppRoutingModule,
+    
     BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
+    AppRoutingModule,
     SharedModule
+
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: LoggerInterceptor, multi: true }],
   bootstrap: [AppComponent]

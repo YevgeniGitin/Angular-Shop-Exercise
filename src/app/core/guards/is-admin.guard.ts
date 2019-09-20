@@ -3,9 +3,7 @@ import { CanActivate, Router } from "@angular/router";
 import { UserService } from "../services/user.service";
 import { User } from "src/app/core/models/user";
 
-@Injectable({
-  providedIn: "root"
-})
+@Injectable()
 export class IsAdminGuard implements CanActivate {
   constructor(private userService: UserService, private router: Router) {}
 //check if admin

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from '../../../core/models/product';
 import { DataService } from '../../../products/services/data.service';
-import { CartService } from '../../../cart/services/cart.service';
+import { CartService } from '../../services/cart.service';
 import { UserService } from '../../../core/services/user.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -12,7 +12,8 @@ import { Observable } from 'rxjs';
   styleUrls: ['./products-list.component.css'],
 })
 export class ProductsListComponent implements OnInit {
-  constructor( private dataService: DataService, private cartService: CartService, private userService: UserService, private route: ActivatedRoute, private router: Router) { }
+  constructor( private dataService: DataService, private cartService: CartService, private userService: UserService, private route: ActivatedRoute, private router: Router) { 
+  }
   action: boolean; //what action to allow add or remove
   productsArray: Observable<Product[]>; //products array
   //display the product

@@ -6,8 +6,12 @@ import { CommonModule } from '@angular/common';
 import { ConfirmationDirective } from './directives/confirmation.directive';
 import { TranslationPipe } from './pipes/translation.pipe';
 import { CartRoutingModule } from '../cart/cart-routing.module';
+import { CartService } from './services/cart.service';
 
 @NgModule({
+    providers: [
+        CartService 
+     ],
     imports:[
         CommonModule,
         CartRoutingModule

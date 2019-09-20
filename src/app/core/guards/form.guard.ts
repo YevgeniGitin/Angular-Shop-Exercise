@@ -2,9 +2,7 @@ import { Injectable } from '@angular/core';
 import { CanDeactivate} from '@angular/router';
 import { ProductFormComponent } from '../../products/components/product-form/product-form.component';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class FormGuard implements CanDeactivate<ProductFormComponent> {
   
   canDeactivate(component: ProductFormComponent): boolean
